@@ -1,0 +1,13 @@
+
+.header {
+  margin-top: 40px;
+}
+
+.header img {
+  width: 150px;
+  display: inline-block;
+}
+
+.header h1 {
+  display: inline-block;
+}

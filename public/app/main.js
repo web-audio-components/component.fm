@@ -1,12 +1,12 @@
 
 (function () {
 
-  var Router = require('./router')
-    , app = {
-        router: new Router(),
-        root: '/'
-      };
+  var app = {
+    root: '/',
+    api: 'http://api.component.fm/'
+  };
 
+  app.router = require('./router')(app);
   Backbone.history.start({ pushState: true, root: app.root });
 
   // All navigation that is relative should be passed through the navigate

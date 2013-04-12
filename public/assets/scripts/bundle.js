@@ -2,12 +2,12 @@
 
 (function () {
 
-  var Router = require('./router')
-    , app = {
-        router: new Router(),
-        root: '/'
-      };
+  var app = {
+    root: '/',
+    api: 'http://api.component.fm/'
+  };
 
+  app.router = require('./router')(app);
   Backbone.history.start({ pushState: true, root: app.root });
 
   // All navigation that is relative should be passed through the navigate
@@ -38,19 +38,64 @@
 
 (function () {
 
-  var Router = Backbone.Router.extend({
+  var Component = require('./modules/component');
 
-    routes: {
-      '': 'index'
-    },
+  module.exports = function (app) {
 
-    index: function () {
-      alert('yay');
+    var Router = Backbone.Router.extend({
+
+      routes: {
+        '': 'index'
+      },
+
+      index: function index () {
+        // On first page load, query the components from the service
+        // and cache them on the app object.
+        if (!app.components) {
+          app.components = new Component.Collection({
+            url: app.api + 'components'
+          });
+          return app.components.fetch({ success: index });
+        }
+        // Display a list of all components.
+        app.activeView = new Component.Views.List({
+          collection: app.components
+        });
+        app.activeView.render();
+      }
+
+    });
+
+    return new Router();
+
+  };
+
+})();
+
+},{"./modules/component":3}],3:[function(require,module,exports){
+
+(function () {
+
+  var Component = {};
+
+  Component.Views = {};
+  Component.Model = Backbone.Model.extend({});
+  Component.Collection = Backbone.Collection.extend({
+    model: Component.Model,
+    url: 'http://api.component.fm/components'
+  });
+
+  Component.Views.List = Backbone.View.extend({
+
+    render: function () {
+      this.collection.each(function (model) {
+        console.log(model);
+      });
     }
 
   });
 
-  module.exports = Router;
+  module.exports = Component;
 
 })();
 

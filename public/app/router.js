@@ -1,18 +1,37 @@
 
 (function () {
 
-  var Router = Backbone.Router.extend({
+  var Component = require('./modules/component');
 
-    routes: {
-      '': 'index'
-    },
+  module.exports = function (app) {
 
-    index: function () {
-      alert('yay');
-    }
+    var Router = Backbone.Router.extend({
 
-  });
+      routes: {
+        '': 'index'
+      },
 
-  module.exports = Router;
+      index: function index () {
+        // On first page load, query the components from the service
+        // and cache them on the app object.
+        if (!app.components) {
+          app.components = new Component.Collection({
+            url: app.api + 'components'
+          });
+          return app.components.fetch({ success: index });
+        }
+        // Display a list of all components.
+        app.activeView = new Component.Views.List({
+          collection: app.components
+        });
+        // $(document).append(app.activeView.render().$el);
+        app.activeView.render();
+      }
+
+    });
+
+    return new Router();
+
+  };
 
 })();

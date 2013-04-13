@@ -8,7 +8,8 @@
     var Router = Backbone.Router.extend({
 
       routes: {
-        '': 'index'
+        '': 'index',
+        ':user/:repo': 'details'
       },
 
       index: function index () {
@@ -28,6 +29,20 @@
           collection: app.components
         });
         $('#content').append(app.activeView.render().$el);
+      },
+
+      details: function (user, repo) {
+        if (app.activeView) {
+          app.activeView.remove();
+        }
+        var component = app.components.findWhere({
+          name: repo,
+          repo: user + '/' + repo
+        });
+        app.activeView = new Component.Views.Detail({
+          model: component
+        });
+        app.activeView.render();
       }
 
     });

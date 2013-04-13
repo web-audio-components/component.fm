@@ -20,6 +20,15 @@
 
   });
 
+  Component.Views.Detail = Backbone.View.extend({
+
+    render: function () {
+      // this.model
+      console.log('awww yeee');
+    }
+
+  });
+
   module.exports = Component;
 
 })();

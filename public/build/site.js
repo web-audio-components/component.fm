@@ -96,7 +96,8 @@ E[_]=E[k]=E[w]=E[j]=E[C]=E[x]=E[O]=E[N]=!0;var I={"boolean":!1,"function":!0,obj
     var Router = Backbone.Router.extend({
 
       routes: {
-        '': 'index'
+        '': 'index',
+        ':user/:repo': 'details'
       },
 
       index: function index () {
@@ -116,6 +117,20 @@ E[_]=E[k]=E[w]=E[j]=E[C]=E[x]=E[O]=E[N]=!0;var I={"boolean":!1,"function":!0,obj
           collection: app.components
         });
         $('#content').append(app.activeView.render().$el);
+      },
+
+      details: function (user, repo) {
+        if (app.activeView) {
+          app.activeView.remove();
+        }
+        var component = app.components.findWhere({
+          name: repo,
+          repo: user + '/' + repo
+        });
+        app.activeView = new Component.Views.Detail({
+          model: component
+        });
+        app.activeView.render();
       }
 
     });
@@ -145,6 +160,15 @@ E[_]=E[k]=E[w]=E[j]=E[C]=E[x]=E[O]=E[N]=!0;var I={"boolean":!1,"function":!0,obj
       var template = _.template($('#list-template').html());
       this.$el.html(template({ components: this.collection }));
       return this;
+    }
+
+  });
+
+  Component.Views.Detail = Backbone.View.extend({
+
+    render: function () {
+      // this.model
+      console.log('awww yeee');
     }
 
   });

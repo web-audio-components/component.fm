@@ -6156,10 +6156,10 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
-.header{margin-top:40px;}
-.header img{width:100px;display:inline-block}
-.header h1{display:inline-block;margin:0}
-.content{display:block;position:relative;margin-top:40px;}
+.header{height:80px;background-image:none;background-color:#fff;}
+.header .container{margin-top:18px}
+.header a{color:#2ccdec}
+.content{display:block;position:relative;margin-top:100px;}
 .content:after{content:"";background:url("/assets/images/logo-trans-large.png") no-repeat center center fixed;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:contain;opacity:.05;top:0;left:0;bottom:0;right:0;position:absolute;z-index:-1}
 .components td{vertical-align:middle}
 .components h4{margin-bottom:5px}

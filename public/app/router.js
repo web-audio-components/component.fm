@@ -12,7 +12,9 @@
         this.route(':user/:repo', _.wrap(this.details, this.middleware));
       },
 
-      middleware: function (route) {
+      middleware: function () {
+        var args = Array.prototype.slice.call(arguments)
+          , route = args.splice(0, 1)[0];
         // Remove and unbind the active view from the DOM.
         if (app.activeView) {
           app.activeView.remove();
@@ -23,11 +25,11 @@
             url: app.api + 'components'
           });
           return app.components.fetch({
-            success: route.bind(this)
+            success: Function.prototype.bind.apply(route, [this].concat(args))
           });
         }
         // Forward to the appropriate route
-        return route.call(this);
+        return route.apply(this, args);
       },
 
       index: function index () {
@@ -44,7 +46,7 @@
             repo: user + '/' + repo
           })
         });
-        app.activeView.render();
+        $('#content').append(app.activeView.render().$el);
       }
 
     });

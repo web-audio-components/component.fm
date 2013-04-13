@@ -23,8 +23,9 @@
   Component.Views.Detail = Backbone.View.extend({
 
     render: function () {
-      // this.model
-      console.log('awww yeee');
+      var template = _.template($('#detail-template').html());
+      this.$el.html(template(this.model.attributes));
+      return this;
     }
 
   });

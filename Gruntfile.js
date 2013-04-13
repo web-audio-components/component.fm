@@ -21,6 +21,18 @@ module.exports = function(grunt) {
       }
     },
 
+    concat: {
+      dist: {
+        src: [
+          './public/assets/scripts/vendor/jquery-1.9.1.min.js',
+          './public/assets/scripts/vendor/lodash-1.1.1.min.js',
+          './public/assets/scripts/vendor/backbone-1.0.0.min.js',
+          './public/assets/scripts/app.js'
+        ],
+        dest: './public/build/site.js'
+      }
+    },
+
     watch: {
       files: [
         'public/app/**/*',
@@ -33,8 +45,10 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-stylus');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-browserify2');
 
   grunt.registerTask('browserify', ['browserify2:compile']);
+  grunt.registerTask('default', ['stylus', 'browserify', 'concat']);
 
 };

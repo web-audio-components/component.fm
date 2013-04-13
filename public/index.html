@@ -40,7 +40,8 @@
             </ul>
             <p class="navbar-text pull-right">
             Made by
-            <a href="http://twitter.com/jsantell" target="blank">@jsantell</a> and <a href="http://twitter.com/ncthom91" target="blank">@ncthom91</a>
+            <a href="http://twitter.com/jsantell" data-bypass target="blank">@jsantell</a> 
+            and <a href="http://twitter.com/ncthom91" data-bypass target="blank">@ncthom91</a>
             </p>
           </div>
         </div>
@@ -57,16 +58,20 @@
         <table class="table components">
           <% components.forEach(function(c) { %>
           <tr>
-            <td>
-              <h4><%= c.get('name') %></h4>
+            <td class="name">
+              <h4>
+                <a href="#"><%= c.get('name') %></a>
+              </h4>
               <span class="github-link">
-                <%= c.get('repo') %>
+                <a href="http://github.com/<%= c.get('repo') %>" data-bypass target="blank" class="grey-link">
+                  <%= c.get('repo') %>
+                </a>
               </span>
             </td>
-            <td>
+            <td class="description">
               <%= c.get('description') %>
             </td>
-            <td>
+            <td class="stars">
               <i class="icon-star"></i>
               <%= c.get('stars') %>
             </td>

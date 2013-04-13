@@ -1,6 +1,16 @@
 
 @import "bootstrap/bootstrap.css"
 
+a
+  color #2ccdec
+  &:hover
+    color: darken(#2ccdec, 20%)
+
+a.grey-link
+  color #aaa
+  &:hover
+    color: darken(#aaa, 20%)
+
 .header
   height 80px
   background-image none
@@ -9,6 +19,8 @@
     margin-top 18px
   a
     color #2ccdec
+    &:hover
+      color: darken(#2ccdec, 20%)
 
 .content
   display block
@@ -32,8 +44,10 @@
 .components
   td
     vertical-align middle
-  h4
-    margin-bottom 5px
+  .name
+    width 300px
+    h4
+      margin-bottom 5px
   .github-link
     color #aaa
 

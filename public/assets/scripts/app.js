@@ -44,24 +44,30 @@
 
     var Router = Backbone.Router.extend({
 
-      routes: {
-        '': 'index',
-        ':user/:repo': 'details'
+      initialize: function (options) {
+        this.route('', _.wrap(this.index, this.middleware));
+        this.route(':user/:repo', _.wrap(this.details, this.middleware));
       },
 
-      index: function index () {
-        // On first page load, query the components from the service
-        // and cache them on the app object.
+      middleware: function (route) {
+        // Remove and unbind the active view from the DOM.
+        if (app.activeView) {
+          app.activeView.remove();
+        }
+        // Make sure the app is initialized with the component database
         if (!app.components) {
           app.components = new Component.Collection({
             url: app.api + 'components'
           });
-          return app.components.fetch({ success: index });
+          return app.components.fetch({
+            success: route.bind(this)
+          });
         }
-        // Should do a check here to remove and unbind activeView if previously
-        // defined.
+        // Forward to the appropriate route
+        return route.call(this);
+      },
 
-        // Display a list of all components.
+      index: function index () {
         app.activeView = new Component.Views.List({
           collection: app.components
         });
@@ -69,15 +75,11 @@
       },
 
       details: function (user, repo) {
-        if (app.activeView) {
-          app.activeView.remove();
-        }
-        var component = app.components.findWhere({
-          name: repo,
-          repo: user + '/' + repo
-        });
         app.activeView = new Component.Views.Detail({
-          model: component
+          model: app.components.findWhere({
+            name: repo,
+            repo: user + '/' + repo
+          })
         });
         app.activeView.render();
       }

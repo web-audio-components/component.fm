@@ -6160,12 +6160,12 @@ a{color:#2ccdec;}
 a:hover{color:#13afcd}
 a.grey-link{color:#aaa;}
 a.grey-link:hover{color:#888}
+body:after{content:"";background:url("/assets/images/logo-trans-large.png") no-repeat center center fixed;-webkit-background-size:contain;-moz-background-size:contain;-o-background-size:contain;background-size:contain;opacity:.05;top:0;left:0;bottom:0;right:0;position:absolute;z-index:-1}
 .header{height:80px;background-image:none;background-color:#fff;}
 .header .container{margin-top:18px}
 .header a{color:#2ccdec;}
 .header a:hover{color:#13afcd}
-.content{display:block;position:relative;margin-top:100px;min-height:600px;}
-.content:after{content:"";background:url("/assets/images/logo-trans-large.png") no-repeat center center fixed;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:contain;opacity:.05;top:0;left:0;bottom:0;right:0;position:absolute;z-index:-1}
+.content{display:block;position:relative;margin-top:100px}
 .components td{vertical-align:middle}
 .components .name{width:300px;}
 .components .name h4{margin-bottom:5px}

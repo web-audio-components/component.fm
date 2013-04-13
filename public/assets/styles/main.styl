@@ -11,6 +11,21 @@ a.grey-link
   &:hover
     color: darken(#aaa, 20%)
 
+body:after
+  content ""
+  background url(/assets/images/logo-trans-large.png) no-repeat center center fixed
+  -webkit-background-size contain
+  -moz-background-size contain
+  -o-background-size contain
+  background-size contain
+  opacity 0.05
+  top 0
+  left 0
+  bottom 0
+  right 0
+  position absolute
+  z-index -1
+
 .header
   height 80px
   background-image none
@@ -26,21 +41,6 @@ a.grey-link
   display block
   position relative
   margin-top 100px
-  min-height 600px
-  &:after
-    content ""
-    background url(/assets/images/logo-trans-large.png) no-repeat center center fixed
-    -webkit-background-size cover
-    -moz-background-size cover
-    -o-background-size cover
-    background-size contain
-    opacity 0.05
-    top 0
-    left 0
-    bottom 0
-    right 0
-    position absolute
-    z-index -1
 
 .components
   td

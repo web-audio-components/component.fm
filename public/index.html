@@ -81,7 +81,73 @@
       </script>
 
       <script type="text/template" id="detail-template">
-        <h1><%= name %></h1>
+        <h1>filter</h1>
+        <p>  A simplication of Web Audio API filters.</p>
+        <h2>Installation</h2>
+        <pre><code>$ component install web-audio-components/filter</code></pre>
+        <h2>Example Usage</h2>
+        <pre><code class="lang-javascript">var context = new webkitAudioContext()
+          , Filter = require(&quot;filter&quot;)
+          , osc = context.createOscillator()
+          , lp = new Filter.Lowpass(context, { frequency: 800 });
+
+        osc.connect(lp.input);
+        lp.connect(context.destination);
+        osc.start(0);</code></pre>
+        <p>For another example, see the test directory.</p>
+        <h2>API</h2>
+        <h3>Filter(context, options)</h3>
+        <p>Instantiate a Filter effect module. Expects an <code>AudioContext</code> as the first
+        parameter.</p>
+        <p><strong>Options</strong></p>
+        <ul>
+        <li><code>type</code> Filter type. Corresponds to the BiquadFilter enum.</li>
+        <li><code>frequency</code> Filter frequency.</li>
+        <li><code>Q</code> Filter Q.</li>
+        <li><code>gain</code> Filter gain.</li>
+        <li><code>wet</code> Wet signal gain coefficient.</li>
+        <li><code>dry</code> Dry signal gain coefficient.</li>
+        </ul>
+        <h3>Filter.Lowpass(context, options)</h3>
+        <p>A utility constructor for instantiating a lowpass filter.</p>
+        <h3>Filter.Highpass(context, options)</h3>
+        <p>A utility constructor for instantiating a highpass filter.</p>
+        <h3>Filter.Bandbass(context, options)</h3>
+        <p>A utility constructor for instantiating a bandpass filter.</p>
+        <h3>Filter.Lowshelf(context, options)</h3>
+        <p>A utility constructor for instantiating a lowshelf filter.</p>
+        <h3>Filter.Highshelf(context, options)</h3>
+        <p>A utility constructor for instantiating a highshelf filter.</p>
+        <h3>Filter.Peaking(context, options)</h3>
+        <p>A utility constructor for instantiating a peaking filter.</p>
+        <h3>Filter.Notch(context, options)</h3>
+        <p>A utility constructor for instantiating a notch filter.</p>
+        <h3>Filter.Allpass(context, options)</h3>
+        <p>A utility constructor for instantiating a allpass filter.</p>
+        <h3>.connect(node)</h3>
+        <p>Connect a Delay module to an <code>AudioNode</code>.</p>
+        <h3>.disconnect()</h3>
+        <p>Disconnect all outgoing connections from a Delay module.</p>
+        <h2>License</h2>
+        <p>  Copyright (c) 2012 Nick Thompson</p>
+        <p>  Permission is hereby granted, free of charge, to any person
+          obtaining a copy of this software and associated documentation
+          files (the &quot;Software&quot;), to deal in the Software without
+          restriction, including without limitation the rights to use,
+          copy, modify, merge, publish, distribute, sublicense, and/or sell
+          copies of the Software, and to permit persons to whom the
+          Software is furnished to do so, subject to the following
+          conditions:</p>
+        <p>  The above copyright notice and this permission notice shall be
+          included in all copies or substantial portions of the Software.</p>
+        <p>  THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,
+          EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+          OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+          NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+          HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+          WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+          FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+          OTHER DEALINGS IN THE SOFTWARE.</p>
       </script>
 
       <script src="/build/site.js"></script>

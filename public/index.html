@@ -44,18 +44,23 @@
 
       <script type="text/template" id="list-template">
         <table class="table components">
+          <% components.forEach(function(c) { %>
           <tr>
             <td>
-              <h4>Delay</h4>
-              <span class="github-link">nick-thompson/delay</span>
+              <h4><%= c.get('name') %></h4>
+              <span class="github-link">
+                <%= c.get('repo') %>
+              </span>
             </td>
             <td>
-              Description
+              <%= c.get('description') %>
             </td>
             <td>
-              Stars
+              <i class="icon-star"></i>
+              <%= c.get('stars') %>
             </td>
           </tr>
+          <% }); %>
         </table>
       </script>
     </body>

@@ -12,10 +12,9 @@
 
   Component.Views.List = Backbone.View.extend({
 
-    template: _.template($("#list-template").html()),
-
     render: function () {
-      this.$el.html($('#list-template').html());
+      var template = _.template($('#list-template').html());
+      this.$el.html(template({ components: this.collection }));
       return this;
     }
 

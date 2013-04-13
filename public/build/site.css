@@ -2282,7 +2282,7 @@ table th[class*="span"],
   *margin-right: .3em;
   line-height: 14px;
   vertical-align: text-top;
-  background-image: url("../img/glyphicons-halflings.png");
+  background-image: url("/assets/images/glyphicons-halflings.png");
   background-position: 14px 14px;
   background-repeat: no-repeat;
 }
@@ -2306,7 +2306,7 @@ table th[class*="span"],
 .dropdown-submenu:focus > a > [class^="icon-"],
 .dropdown-submenu:hover > a > [class*=" icon-"],
 .dropdown-submenu:focus > a > [class*=" icon-"] {
-  background-image: url("../img/glyphicons-halflings-white.png");
+  background-image: url("/assets/images/glyphicons-halflings-white.png");
 }
 
 .icon-glass {
@@ -6159,9 +6159,8 @@ a.badge:focus {
 .header{margin-top:40px;}
 .header img{width:100px;display:inline-block}
 .header h1{display:inline-block;margin:0}
-.content{display:block;position:relative;}
-.content:after{content:"";background:url("/assets/images/logo-trans-large.png") no-repeat center center fixed;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:contain;opacity:.1;top:0;left:0;bottom:0;right:0;position:absolute;z-index:-1}
-.components{margin-top:20px;}
+.content{display:block;position:relative;margin-top:40px;}
+.content:after{content:"";background:url("/assets/images/logo-trans-large.png") no-repeat center center fixed;-webkit-background-size:cover;-moz-background-size:cover;-o-background-size:cover;background-size:contain;opacity:.05;top:0;left:0;bottom:0;right:0;position:absolute;z-index:-1}
 .components td{vertical-align:middle}
 .components h4{margin-bottom:5px}
-.components .github-link{color:#aaa;margin-left:2px}
+.components .github-link{color:#aaa}

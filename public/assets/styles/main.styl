@@ -2,10 +2,39 @@
 @import "bootstrap/bootstrap.css"
 
 .header
-    margin-top 40px
-    img
-        width 100px
-        display inline-block
-    h1
-        display inline-block
-        margin 0
+  margin-top 40px
+  img
+    width 100px
+    display inline-block
+  h1
+    display inline-block
+    margin 0
+
+.content
+  display block
+  position relative
+  &:after
+    content ""
+    background url(/assets/images/logo-trans-large.png) no-repeat center center fixed
+    -webkit-background-size cover
+    -moz-background-size cover
+    -o-background-size cover
+    background-size contain
+    opacity 0.1
+    top 0
+    left 0
+    bottom 0
+    right 0
+    position absolute
+    z-index -1
+
+.components
+  margin-top 20px
+  td
+    vertical-align middle
+  h4
+    margin-bottom 5px
+  .github-link
+    color #aaa
+    margin-left 2px
+

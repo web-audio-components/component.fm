@@ -25,7 +25,7 @@
           collection: app.components
         });
         // $(document).append(app.activeView.render().$el);
-        app.activeView.render();
+        $('#content').append(app.activeView.render().$el);
       }
 
     });

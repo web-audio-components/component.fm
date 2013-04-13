@@ -61,7 +61,8 @@
         app.activeView = new Component.Views.List({
           collection: app.components
         });
-        app.activeView.render();
+        // $(document).append(app.activeView.render().$el);
+        $('#content').append(app.activeView.render().$el);
       }
 
     });
@@ -87,10 +88,11 @@
 
   Component.Views.List = Backbone.View.extend({
 
+    template: _.template($("#list-template").html()),
+
     render: function () {
-      this.collection.each(function (model) {
-        console.log(model);
-      });
+      this.$el.html($('#list-template').html());
+      return this;
     }
 
   });

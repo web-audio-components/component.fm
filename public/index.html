@@ -31,11 +31,9 @@
       <![endif]-->
 
       <div class="container">
-        <div class="sixteen columns header">
-          <a href="http://component.fm">
-            <img src="/assets/images/logo-trans-small.png">
-            <h1>Component.fm</h1>
-          </a>
+        <div class="row">
+          <div class="span12 content" id="content">
+          </div>
         </div>
       </div>
 
@@ -43,5 +41,22 @@
       <script src="/assets/scripts/vendor/lodash-1.1.1.min.js"></script>
       <script src="/assets/scripts/vendor/backbone-1.0.0.min.js"></script>
       <script src="/assets/scripts/bundle.js"></script>
+
+      <script type="text/template" id="list-template">
+        <table class="table components">
+          <tr>
+            <td>
+              <h4>Delay</h4>
+              <span class="github-link">nick-thompson/delay</span>
+            </td>
+            <td>
+              Description
+            </td>
+            <td>
+              Stars
+            </td>
+          </tr>
+        </table>
+      </script>
     </body>
   </html>

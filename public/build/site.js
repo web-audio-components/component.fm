@@ -108,11 +108,13 @@ E[_]=E[k]=E[w]=E[j]=E[C]=E[x]=E[O]=E[N]=!0;var I={"boolean":!1,"function":!0,obj
           });
           return app.components.fetch({ success: index });
         }
+        // Should do a check here to remove and unbind activeView if previously
+        // defined.
+
         // Display a list of all components.
         app.activeView = new Component.Views.List({
           collection: app.components
         });
-        // $(document).append(app.activeView.render().$el);
         $('#content').append(app.activeView.render().$el);
       }
 

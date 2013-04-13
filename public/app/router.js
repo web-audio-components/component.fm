@@ -20,11 +20,13 @@
           });
           return app.components.fetch({ success: index });
         }
+        // Should do a check here to remove and unbind activeView if previously
+        // defined.
+
         // Display a list of all components.
         app.activeView = new Component.Views.List({
           collection: app.components
         });
-        // $(document).append(app.activeView.render().$el);
         $('#content').append(app.activeView.render().$el);
       }
 

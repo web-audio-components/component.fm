@@ -36,9 +36,9 @@ module.exports = function(grunt) {
     watch: {
       files: [
         'public/app/**/*',
-        'public/assets/**/*'
+        'public/assets/styles/*.styl'
       ],
-      tasks: ['stylus']
+      tasks: ['default']
     }
 
   });

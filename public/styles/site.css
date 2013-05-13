@@ -1,0 +1,15 @@
+a{color:#2ccdec;}
+a:hover{color:#13afcd}
+a.grey-link{color:#aaa;}
+a.grey-link:hover{color:#888}
+#container{margin-top:50px}
+body:after{content:"";background:url("../images/logo-trans-large.png") no-repeat center center fixed;-webkit-background-size:contain;-moz-background-size:contain;-o-background-size:contain;background-size:contain;opacity:.05;top:0;left:0;bottom:0;right:0;position:fixed;z-index:-1}
+.header{height:40px;background-image:none;background-color:#fff;}
+.header a{color:#2ccdec;}
+.header a:hover{color:#13afcd}
+.content{display:block;position:relative;margin-top:100px}
+.components td{vertical-align:middle}
+.components .name{width:300px;}
+.components .name h4{margin-bottom:5px}
+.components .github-link{color:#aaa}
+.loading{margin:30px auto;height:55px;width:54px;background-image:url("../images/ajax-loader.gif")}

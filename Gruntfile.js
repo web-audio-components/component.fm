@@ -2,41 +2,93 @@
 module.exports = function(grunt) {
 
   grunt.initConfig({
-
     stylus: {
       compile: {
         options: {
           'include css': true
         },
         files: {
-          'public/build/site.css': 'public/assets/styles/main.styl'
+          'public/styles/site.css': 'app/styles/*.styl'
+        }
+      }
+    },
+
+    cssmin: {
+      combine: {
+        files: {
+          'public/styles/site.min.css': [
+            'vendor/styles/bootstrap/bootstrap.css',
+            'public/styles/site.css'
+          ]
         }
       }
     },
 
     browserify2: {
       compile: {
-        entry: './public/app/main.js',
-        compile: './public/assets/scripts/app.js'
+        entry: './app/main.js',
+        compile: './public/scripts/app.js'
       }
     },
 
     concat: {
       dist: {
         src: [
-          './public/assets/scripts/vendor/jquery-1.9.1.min.js',
-          './public/assets/scripts/vendor/lodash-1.1.1.min.js',
-          './public/assets/scripts/vendor/backbone-1.0.0.min.js',
-          './public/assets/scripts/app.js'
+          './vendor/scripts/jquery-2.0.0.js',
+          './vendor/scripts/underscore-1.4.4.js',
+          './vendor/scripts/backbone-1.0.0.js',
+          './vendor/scripts/handlebars-1.0.0-rc.3.js',
+          './public/scripts/templates.js',
+          './public/scripts/app.js'
         ],
-        dest: './public/build/site.js'
+        dest: './public/scripts/site.js'
+      }
+    },
+
+    uglify: {
+      development: {
+        files: {
+          'public/scripts/site.min.js': 'public/scripts/site.js'
+        }
+      }
+    },
+
+    jade: {
+      dev: {
+        options: {
+          data: { env: 'development' }
+        },
+        files: {
+          'public/dev.html': 'app/markup/index.jade'
+        }
+      },
+      prod: {
+        options: {
+          data: { env: 'production' }
+        },
+        files: {
+          'public/index.html': 'app/markup/index.jade'
+        }
+      }
+    },
+    // Need to figure out how to wrap this in CJS
+    handlebars: {
+      compile: {
+        options: {
+          namespace: 'templates',
+          processName: function ( name ) {
+            return name.split('/').pop().match(/^(.*)\.hbs$/)[1];
+          }
+        },
+        files: {
+          'public/scripts/templates.js': 'app/templates/*.hbs'
+        }
       }
     },
 
     watch: {
       files: [
-        'public/app/**/*',
-        'public/assets/styles/*.styl'
+        'app/**/*'
       ],
       tasks: ['default']
     }
@@ -47,8 +99,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-stylus');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-browserify2');
+  grunt.loadNpmTasks('grunt-contrib-cssmin');
+  grunt.loadNpmTasks('grunt-contrib-jade');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-handlebars');
 
   grunt.registerTask('browserify', ['browserify2:compile']);
-  grunt.registerTask('default', ['stylus', 'browserify', 'concat']);
-
+  grunt.registerTask('default', 'jade stylus browserify handlebars concat cssmin uglify'.split(' '));
 };

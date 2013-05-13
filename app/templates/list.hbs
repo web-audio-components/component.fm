@@ -1,0 +1,18 @@
+<table class="table components">
+  {{#each components}}
+    <tr>
+      <td class="name">
+        <h4>
+          <a href="#component/{{repo}}">{{name}}</a>
+        </h4>
+        <span class="github-link"
+          <a href="http://github.com/{{repo}}" class="grey-link">
+            {{repo}}
+          </a>
+        </span>
+      </td>
+      <td class="description">{{description}}</td>
+      <td class="stars"><i class="icon-star"></i>{{stars}}</td>
+    </tr>
+  {{/each}}
+</table>

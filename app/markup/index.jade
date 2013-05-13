@@ -1,0 +1,39 @@
+!!! 5
+//if lt IE 7
+  html.no-js.ie6.oldie(lang='en')
+//if IE 7
+  html.no-js.ie7.oldie(lang='en')
+//if IE 8
+  html.no-js.ie8.oldie(lang='en')
+//[if gt IE 8]><!
+html.no-js(lang='en')
+  //<![end if]
+  head
+    title= 'component.fm'
+    meta(charset='utf-8')
+    meta(description='')
+    link(rel='stylesheet', href='styles/site.min.css')
+  body
+    .navbar.navbar-fixed-top
+      .navbar-inner.header
+        .container
+          a.brand(href='#') component.fm
+          ul.nav
+            li
+              a(href='#about') About
+            li
+              a(href='#write') Write Your Own
+    #container.container
+      .row
+        #list.span12
+          .loading
+        #component.span12
+
+    - if (env === 'development')
+      script
+        var ENV = 'development';
+      script(src='scripts/site.js')
+    - else
+      script
+        var ENV = 'production';
+      script(src='scripts/site.min.js')

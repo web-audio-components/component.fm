@@ -10,5 +10,9 @@ module.exports = View.extend({
 
   getRenderData: function () {
     return { components: this.components.toJSON() };
+  },
+
+  afterRender: function () {
+    $('#main').html(this.$el);
   }
 });

@@ -1,19 +1,24 @@
+var when = require('./lib/when');
 var Components = require('./collections/components');
 var ListView = require('./views/list');
+var ComponentView = require('./views/component');
 
 module.exports = Backbone.Router.extend({
-  
+
   routes: {
     '': 'home',
     'component/:owner/:module': 'component'
   },
 
   initialize: function () {
+    var router = this;
+    var deferred = when.defer();
+    this.initialized = deferred.promise;
     this.components = new Components();
 
     this.components.fetch({
-      success: function () {
-      }
+      success: deferred.resolve,
+      error: deferred.reject
     });
   },
 
@@ -25,22 +30,30 @@ module.exports = Backbone.Router.extend({
 
   setView: function (view) {
     this.clearView();
-    $('#main').html(view.render().el);
+    this.initialized.then(function () {
+      console.log(view);
+      $('#main').html(view.render().el);
+    });
     this.view = view;
-  }
+  },
 
-});
+  home: function () {
+    if (!this.listView) {
+      this.listView = new ListView({
+        components: this.components
+      });
+    }
+    this.setView(this.listView);
+  },
 
-function home () {
-  if (!this.listView) {
-    this.listView = new ListView({
-      components: this.components
+  component: function (owner, module) {
+    var router = this;
+    this.initialized.then(function () {
+      var component = router.components.where({ repo: owner + '/' + module })[0];
+      var view = new ComponentView({
+        component: component
+      });
+      router.setView(view);
     });
   }
-  this.setView(this.listView);
-}
-
-function component (owner, module) {
-  console.log(owner, module);
-
-}
+});

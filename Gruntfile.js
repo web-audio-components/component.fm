@@ -8,7 +8,7 @@ module.exports = function(grunt) {
           'include css': true
         },
         files: {
-          'public/styles/site.css': 'app/styles/*.styl'
+          'public/styles/site.css': 'client/styles/*.styl'
         }
       }
     },
@@ -26,7 +26,7 @@ module.exports = function(grunt) {
 
     browserify2: {
       compile: {
-        entry: './app/main.js',
+        entry: './client/index.js',
         compile: './public/scripts/app.js'
       }
     },
@@ -59,7 +59,7 @@ module.exports = function(grunt) {
           data: { env: 'development' }
         },
         files: {
-          'public/dev.html': 'app/markup/index.jade'
+          'public/dev.html': 'client/markup/index.jade'
         }
       },
       prod: {
@@ -67,7 +67,7 @@ module.exports = function(grunt) {
           data: { env: 'production' }
         },
         files: {
-          'public/index.html': 'app/markup/index.jade'
+          'public/index.html': 'client/markup/index.jade'
         }
       }
     },
@@ -81,14 +81,14 @@ module.exports = function(grunt) {
           }
         },
         files: {
-          'public/scripts/templates.js': 'app/templates/*.hbs'
+          'public/scripts/templates.js': 'client/templates/*.hbs'
         }
       }
     },
 
     watch: {
       files: [
-        'app/**/*'
+        'client/**/*'
       ],
       tasks: ['default']
     }

@@ -1,0 +1,33 @@
+<div class="row">
+  <h1>{{name}}</h1>
+  <div class="description">{{description}}</div>
+  <table class="table table-bordered table-striped">
+    <tbody>
+      <tr>
+        <td class="attribute-label">author</td>
+        <td>
+          {{author}}
+        </td>
+      </tr>
+      <tr>
+        <td class="attribute-label">repo</td>
+        <td><a href="https://github.com/{{repo}}" title="GitHub repository for {{name}}">{{repo}}</a></td>
+      </tr>
+      <tr>
+        <td class="attribute-label">keywords</td>
+        <td>{{keywords}}</td>
+      </tr>
+      <tr>
+        <td class="attribute-label">updated</td>
+        <td>{{updated}}</td>
+      </tr>
+      <tr>
+        <td class="attribute-label">watchers</td>
+        <td>{{watchers}} stars</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="activate-player">
+    <a href="#">Demo this module</a>
+  </div>
+</div>

@@ -13761,8 +13761,46 @@ this["templates"] = this["templates"] || {};
 this["templates"]["component"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [2,'>= 1.0.0-rc.3'];
 helpers = helpers || Handlebars.helpers; data = data || {};
-  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression;
+  var buffer = "", stack1, functionType="function", escapeExpression=this.escapeExpression, self=this;
 
+function program1(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "\n            <a href=\"\n              ";
+  stack1 = helpers['if'].call(depth0, depth0.isAudio, {hash:{},inverse:self.program(4, program4, data),fn:self.program(2, program2, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n            \" title=\"";
+  if (stack1 = helpers.name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "\">";
+  if (stack1 = helpers.name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</a>\n          ";
+  return buffer;
+  }
+function program2(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "\n                #components/";
+  if (stack1 = helpers.name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "\n              ";
+  return buffer;
+  }
+
+function program4(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "\n                http://github.com/";
+  if (stack1 = helpers.name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.name; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "\n              ";
+  return buffer;
+  }
 
   buffer += "<div class=\"row\">\n  <h1>";
   if (stack1 = helpers.name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
@@ -13788,7 +13826,11 @@ helpers = helpers || Handlebars.helpers; data = data || {};
   if (stack1 = helpers.repo) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.repo; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + "</a></td>\n      </tr>\n      <tr>\n        <td class=\"attribute-label\">keywords</td>\n        <td>";
+    + "</a></td>\n      </tr>\n      <tr>\n        <td class=\"attribute-label\">version</td>\n        <td>";
+  if (stack1 = helpers.version) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.version; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</td>\n      </tr>\n      <tr>\n        <td class=\"attribute-label\">keywords</td>\n        <td>";
   if (stack1 = helpers.keywords) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.keywords; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
@@ -13796,9 +13838,15 @@ helpers = helpers || Handlebars.helpers; data = data || {};
   if (stack1 = helpers.updated) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.updated; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + "</td>\n      </tr>\n      <tr>\n        <td class=\"attribute-label\">watchers</td>\n        <td>";
-  if (stack1 = helpers.watchers) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
-  else { stack1 = depth0.watchers; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+    + "</td>\n      </tr>\n      <tr>\n        <td class=\"attribute-label\">dependencies</td>\n        <td>\n          ";
+  stack1 = helpers.each.call(depth0, depth0.dependencies, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n        </td>\n      </tr>\n      <tr>\n        <td class=\"attribute-label\">dependents</td>\n        <td>\n          ";
+  stack1 = helpers.each.call(depth0, depth0.dependents, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n        </td>\n      </tr>\n      <tr>\n        <td class=\"attribute-label\">watchers</td>\n        <td>";
+  if (stack1 = helpers.stars) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.stars; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
     + " stars</td>\n      </tr>\n    </tbody>\n  </table>\n  <div class=\"activate-player\">\n    <a href=\"#\">Demo this module</a>\n  </div>\n</div>\n";
   return buffer;
@@ -13812,7 +13860,7 @@ helpers = helpers || Handlebars.helpers; data = data || {};
 function program1(depth0,data) {
   
   var buffer = "", stack1;
-  buffer += "\n    <tr>\n      <td class=\"name\">\n        <h4>\n          <a href=\"#component/";
+  buffer += "\n    <tr>\n      <td class=\"name\">\n        <h4>\n          <a href=\"#components/";
   if (stack1 = helpers.repo) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.repo; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
@@ -13846,17 +13894,3373 @@ function program1(depth0,data) {
   buffer += "\n</table>\n";
   return buffer;
   });
+
+/**
+ * Require the given path.
+ *
+ * @param {String} path
+ * @return {Object} exports
+ * @api public
+ */
+
+function require(path, parent, orig) {
+  var resolved = require.resolve(path);
+
+  // lookup failed
+  if (null == resolved) {
+    orig = orig || path;
+    parent = parent || 'root';
+    var err = new Error('Failed to require "' + orig + '" from "' + parent + '"');
+    err.path = orig;
+    err.parent = parent;
+    err.require = true;
+    throw err;
+  }
+
+  var module = require.modules[resolved];
+
+  // perform real require()
+  // by invoking the module's
+  // registered function
+  if (!module.exports) {
+    module.exports = {};
+    module.client = module.component = true;
+    module.call(this, module.exports, require.relative(resolved), module);
+  }
+
+  return module.exports;
+}
+
+/**
+ * Registered modules.
+ */
+
+require.modules = {};
+
+/**
+ * Registered aliases.
+ */
+
+require.aliases = {};
+
+/**
+ * Resolve `path`.
+ *
+ * Lookup:
+ *
+ *   - PATH/index.js
+ *   - PATH.js
+ *   - PATH
+ *
+ * @param {String} path
+ * @return {String} path or null
+ * @api private
+ */
+
+require.resolve = function(path) {
+  if (path.charAt(0) === '/') path = path.slice(1);
+  var index = path + '/index.js';
+
+  var paths = [
+    path,
+    path + '.js',
+    path + '.json',
+    path + '/index.js',
+    path + '/index.json'
+  ];
+
+  for (var i = 0; i < paths.length; i++) {
+    var path = paths[i];
+    if (require.modules.hasOwnProperty(path)) return path;
+  }
+
+  if (require.aliases.hasOwnProperty(index)) {
+    return require.aliases[index];
+  }
+};
+
+/**
+ * Normalize `path` relative to the current path.
+ *
+ * @param {String} curr
+ * @param {String} path
+ * @return {String}
+ * @api private
+ */
+
+require.normalize = function(curr, path) {
+  var segs = [];
+
+  if ('.' != path.charAt(0)) return path;
+
+  curr = curr.split('/');
+  path = path.split('/');
+
+  for (var i = 0; i < path.length; ++i) {
+    if ('..' == path[i]) {
+      curr.pop();
+    } else if ('.' != path[i] && '' != path[i]) {
+      segs.push(path[i]);
+    }
+  }
+
+  return curr.concat(segs).join('/');
+};
+
+/**
+ * Register module at `path` with callback `definition`.
+ *
+ * @param {String} path
+ * @param {Function} definition
+ * @api private
+ */
+
+require.register = function(path, definition) {
+  require.modules[path] = definition;
+};
+
+/**
+ * Alias a module definition.
+ *
+ * @param {String} from
+ * @param {String} to
+ * @api private
+ */
+
+require.alias = function(from, to) {
+  if (!require.modules.hasOwnProperty(from)) {
+    throw new Error('Failed to alias "' + from + '", it does not exist');
+  }
+  require.aliases[to] = from;
+};
+
+/**
+ * Return a require function relative to the `parent` path.
+ *
+ * @param {String} parent
+ * @return {Function}
+ * @api private
+ */
+
+require.relative = function(parent) {
+  var p = require.normalize(parent, '..');
+
+  /**
+   * lastIndexOf helper.
+   */
+
+  function lastIndexOf(arr, obj) {
+    var i = arr.length;
+    while (i--) {
+      if (arr[i] === obj) return i;
+    }
+    return -1;
+  }
+
+  /**
+   * The relative require() itself.
+   */
+
+  function localRequire(path) {
+    var resolved = localRequire.resolve(path);
+    return require(resolved, parent, path);
+  }
+
+  /**
+   * Resolve relative to the parent.
+   */
+
+  localRequire.resolve = function(path) {
+    var c = path.charAt(0);
+    if ('/' == c) return path.slice(1);
+    if ('.' == c) return require.normalize(p, path);
+
+    // resolve deps by returning
+    // the dep in the nearest "deps"
+    // directory
+    var segs = parent.split('/');
+    var i = lastIndexOf(segs, 'deps') + 1;
+    if (!i) i = 0;
+    path = segs.slice(0, i + 1).join('/') + '/deps/' + path;
+    return path;
+  };
+
+  /**
+   * Check if module is defined at `path`.
+   */
+
+  localRequire.exists = function(path) {
+    return require.modules.hasOwnProperty(localRequire.resolve(path));
+  };
+
+  return localRequire;
+};
+require.register("matthewmueller-hogan/hogan.js", function(exports, require, module){
+/*
+ *  Copyright 2011 Twitter, Inc.
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+
+
+
+var Hogan = {};
+
+(function (Hogan, useArrayBuffer) {
+  Hogan.Template = function (renderFunc, text, compiler, options) {
+    this.r = renderFunc || this.r;
+    this.c = compiler;
+    this.options = options;
+    this.text = text || '';
+    this.buf = (useArrayBuffer) ? [] : '';
+  }
+
+  Hogan.Template.prototype = {
+    // render: replaced by generated code.
+    r: function (context, partials, indent) { return ''; },
+
+    // variable escaping
+    v: hoganEscape,
+
+    // triple stache
+    t: coerceToString,
+
+    render: function render(context, partials, indent) {
+      return this.ri([context], partials || {}, indent);
+    },
+
+    // render internal -- a hook for overrides that catches partials too
+    ri: function (context, partials, indent) {
+      return this.r(context, partials, indent);
+    },
+
+    // tries to find a partial in the curent scope and render it
+    rp: function(name, context, partials, indent) {
+      var partial = partials[name];
+
+      if (!partial) {
+        return '';
+      }
+
+      if (this.c && typeof partial == 'string') {
+        partial = this.c.compile(partial, this.options);
+      }
+
+      return partial.ri(context, partials, indent);
+    },
+
+    // render a section
+    rs: function(context, partials, section) {
+      var tail = context[context.length - 1];
+
+      if (!isArray(tail)) {
+        section(context, partials, this);
+        return;
+      }
+
+      for (var i = 0; i < tail.length; i++) {
+        context.push(tail[i]);
+        section(context, partials, this);
+        context.pop();
+      }
+    },
+
+    // maybe start a section
+    s: function(val, ctx, partials, inverted, start, end, tags) {
+      var pass;
+
+      if (isArray(val) && val.length === 0) {
+        return false;
+      }
+
+      if (typeof val == 'function') {
+        val = this.ls(val, ctx, partials, inverted, start, end, tags);
+      }
+
+      pass = (val === '') || !!val;
+
+      if (!inverted && pass && ctx) {
+        ctx.push((typeof val == 'object') ? val : ctx[ctx.length - 1]);
+      }
+
+      return pass;
+    },
+
+    // find values with dotted names
+    d: function(key, ctx, partials, returnFound) {
+      var names = key.split('.'),
+          val = this.f(names[0], ctx, partials, returnFound),
+          cx = null;
+
+      if (key === '.' && isArray(ctx[ctx.length - 2])) {
+        return ctx[ctx.length - 1];
+      }
+
+      for (var i = 1; i < names.length; i++) {
+        if (val && typeof val == 'object' && names[i] in val) {
+          cx = val;
+          val = val[names[i]];
+        } else {
+          val = '';
+        }
+      }
+
+      if (returnFound && !val) {
+        return false;
+      }
+
+      if (!returnFound && typeof val == 'function') {
+        ctx.push(cx);
+        val = this.lv(val, ctx, partials);
+        ctx.pop();
+      }
+
+      return val;
+    },
+
+    // find values with normal names
+    f: function(key, ctx, partials, returnFound) {
+      var val = false,
+          v = null,
+          found = false;
+
+      for (var i = ctx.length - 1; i >= 0; i--) {
+        v = ctx[i];
+        if (v && typeof v == 'object' && key in v) {
+          val = v[key];
+          found = true;
+          break;
+        }
+      }
+
+      if (!found) {
+        return (returnFound) ? false : "";
+      }
+
+      if (!returnFound && typeof val == 'function') {
+        val = this.lv(val, ctx, partials);
+      }
+
+      return val;
+    },
+
+    // higher order templates
+    ho: function(val, cx, partials, text, tags) {
+      var compiler = this.c;
+      var options = this.options;
+      options.delimiters = tags;
+      var text = val.call(cx, text);
+      text = (text == null) ? String(text) : text.toString();
+      this.b(compiler.compile(text, options).render(cx, partials));
+      return false;
+    },
+
+    // template result buffering
+    b: (useArrayBuffer) ? function(s) { this.buf.push(s); } :
+                          function(s) { this.buf += s; },
+    fl: (useArrayBuffer) ? function() { var r = this.buf.join(''); this.buf = []; return r; } :
+                           function() { var r = this.buf; this.buf = ''; return r; },
+
+    // lambda replace section
+    ls: function(val, ctx, partials, inverted, start, end, tags) {
+      var cx = ctx[ctx.length - 1],
+          t = null;
+
+      if (!inverted && this.c && val.length > 0) {
+        return this.ho(val, cx, partials, this.text.substring(start, end), tags);
+      }
+
+      t = val.call(cx);
+
+      if (typeof t == 'function') {
+        if (inverted) {
+          return true;
+        } else if (this.c) {
+          return this.ho(t, cx, partials, this.text.substring(start, end), tags);
+        }
+      }
+
+      return t;
+    },
+
+    // lambda replace variable
+    lv: function(val, ctx, partials) {
+      var cx = ctx[ctx.length - 1];
+      var result = val.call(cx);
+
+      if (typeof result == 'function') {
+        result = coerceToString(result.call(cx));
+        if (this.c && ~result.indexOf("{\u007B")) {
+          return this.c.compile(result, this.options).render(cx, partials);
+        }
+      }
+
+      return coerceToString(result);
+    }
+
+  };
+
+  var rAmp = /&/g,
+      rLt = /</g,
+      rGt = />/g,
+      rApos =/\'/g,
+      rQuot = /\"/g,
+      hChars =/[&<>\"\']/;
+
+
+  function coerceToString(val) {
+    return String((val === null || val === undefined) ? '' : val);
+  }
+
+  function hoganEscape(str) {
+    str = coerceToString(str);
+    return hChars.test(str) ?
+      str
+        .replace(rAmp,'&amp;')
+        .replace(rLt,'&lt;')
+        .replace(rGt,'&gt;')
+        .replace(rApos,'&#39;')
+        .replace(rQuot, '&quot;') :
+      str;
+  }
+
+  var isArray = Array.isArray || function(a) {
+    return Object.prototype.toString.call(a) === '[object Array]';
+  };
+
+})(typeof exports !== 'undefined' ? exports : Hogan);
+
+
+
+
+(function (Hogan) {
+  // Setup regex  assignments
+  // remove whitespace according to Mustache spec
+  var rIsWhitespace = /\S/,
+      rQuot = /\"/g,
+      rNewline =  /\n/g,
+      rCr = /\r/g,
+      rSlash = /\\/g,
+      tagTypes = {
+        '#': 1, '^': 2, '/': 3,  '!': 4, '>': 5,
+        '<': 6, '=': 7, '_v': 8, '{': 9, '&': 10
+      };
+
+  Hogan.scan = function scan(text, delimiters) {
+    var len = text.length,
+        IN_TEXT = 0,
+        IN_TAG_TYPE = 1,
+        IN_TAG = 2,
+        state = IN_TEXT,
+        tagType = null,
+        tag = null,
+        buf = '',
+        tokens = [],
+        seenTag = false,
+        i = 0,
+        lineStart = 0,
+        otag = '{{',
+        ctag = '}}';
+
+    function addBuf() {
+      if (buf.length > 0) {
+        tokens.push(new String(buf));
+        buf = '';
+      }
+    }
+
+    function lineIsWhitespace() {
+      var isAllWhitespace = true;
+      for (var j = lineStart; j < tokens.length; j++) {
+        isAllWhitespace =
+          (tokens[j].tag && tagTypes[tokens[j].tag] < tagTypes['_v']) ||
+          (!tokens[j].tag && tokens[j].match(rIsWhitespace) === null);
+        if (!isAllWhitespace) {
+          return false;
+        }
+      }
+
+      return isAllWhitespace;
+    }
+
+    function filterLine(haveSeenTag, noNewLine) {
+      addBuf();
+
+      if (haveSeenTag && lineIsWhitespace()) {
+        for (var j = lineStart, next; j < tokens.length; j++) {
+          if (!tokens[j].tag) {
+            if ((next = tokens[j+1]) && next.tag == '>') {
+              // set indent to token value
+              next.indent = tokens[j].toString()
+            }
+            tokens.splice(j, 1);
+          }
+        }
+      } else if (!noNewLine) {
+        tokens.push({tag:'\n'});
+      }
+
+      seenTag = false;
+      lineStart = tokens.length;
+    }
+
+    function changeDelimiters(text, index) {
+      var close = '=' + ctag,
+          closeIndex = text.indexOf(close, index),
+          delimiters = trim(
+            text.substring(text.indexOf('=', index) + 1, closeIndex)
+          ).split(' ');
+
+      otag = delimiters[0];
+      ctag = delimiters[1];
+
+      return closeIndex + close.length - 1;
+    }
+
+    if (delimiters) {
+      delimiters = delimiters.split(' ');
+      otag = delimiters[0];
+      ctag = delimiters[1];
+    }
+
+    for (i = 0; i < len; i++) {
+      if (state == IN_TEXT) {
+        if (tagChange(otag, text, i)) {
+          --i;
+          addBuf();
+          state = IN_TAG_TYPE;
+        } else {
+          if (text.charAt(i) == '\n') {
+            filterLine(seenTag);
+          } else {
+            buf += text.charAt(i);
+          }
+        }
+      } else if (state == IN_TAG_TYPE) {
+        i += otag.length - 1;
+        tag = tagTypes[text.charAt(i + 1)];
+        tagType = tag ? text.charAt(i + 1) : '_v';
+        if (tagType == '=') {
+          i = changeDelimiters(text, i);
+          state = IN_TEXT;
+        } else {
+          if (tag) {
+            i++;
+          }
+          state = IN_TAG;
+        }
+        seenTag = i;
+      } else {
+        if (tagChange(ctag, text, i)) {
+          tokens.push({tag: tagType, n: trim(buf), otag: otag, ctag: ctag,
+                       i: (tagType == '/') ? seenTag - ctag.length : i + otag.length});
+          buf = '';
+          i += ctag.length - 1;
+          state = IN_TEXT;
+          if (tagType == '{') {
+            if (ctag == '}}') {
+              i++;
+            } else {
+              cleanTripleStache(tokens[tokens.length - 1]);
+            }
+          }
+        } else {
+          buf += text.charAt(i);
+        }
+      }
+    }
+
+    filterLine(seenTag, true);
+
+    return tokens;
+  }
+
+  function cleanTripleStache(token) {
+    if (token.n.substr(token.n.length - 1) === '}') {
+      token.n = token.n.substring(0, token.n.length - 1);
+    }
+  }
+
+  function trim(s) {
+    if (s.trim) {
+      return s.trim();
+    }
+
+    return s.replace(/^\s*|\s*$/g, '');
+  }
+
+  function tagChange(tag, text, index) {
+    if (text.charAt(index) != tag.charAt(0)) {
+      return false;
+    }
+
+    for (var i = 1, l = tag.length; i < l; i++) {
+      if (text.charAt(index + i) != tag.charAt(i)) {
+        return false;
+      }
+    }
+
+    return true;
+  }
+
+  function buildTree(tokens, kind, stack, customTags) {
+    var instructions = [],
+        opener = null,
+        token = null;
+
+    while (tokens.length > 0) {
+      token = tokens.shift();
+      if (token.tag == '#' || token.tag == '^' || isOpener(token, customTags)) {
+        stack.push(token);
+        token.nodes = buildTree(tokens, token.tag, stack, customTags);
+        instructions.push(token);
+      } else if (token.tag == '/') {
+        if (stack.length === 0) {
+          throw new Error('Closing tag without opener: /' + token.n);
+        }
+        opener = stack.pop();
+        if (token.n != opener.n && !isCloser(token.n, opener.n, customTags)) {
+          throw new Error('Nesting error: ' + opener.n + ' vs. ' + token.n);
+        }
+        opener.end = token.i;
+        return instructions;
+      } else {
+        instructions.push(token);
+      }
+    }
+
+    if (stack.length > 0) {
+      throw new Error('missing closing tag: ' + stack.pop().n);
+    }
+
+    return instructions;
+  }
+
+  function isOpener(token, tags) {
+    for (var i = 0, l = tags.length; i < l; i++) {
+      if (tags[i].o == token.n) {
+        token.tag = '#';
+        return true;
+      }
+    }
+  }
+
+  function isCloser(close, open, tags) {
+    for (var i = 0, l = tags.length; i < l; i++) {
+      if (tags[i].c == close && tags[i].o == open) {
+        return true;
+      }
+    }
+  }
+
+  Hogan.generate = function (tree, text, options) {
+    var code = 'var _=this;_.b(i=i||"");' + walk(tree) + 'return _.fl();';
+    if (options.asString) {
+      return 'function(c,p,i){' + code + ';}';
+    }
+
+    return new Hogan.Template(new Function('c', 'p', 'i', code), text, Hogan, options);
+  }
+
+  function esc(s) {
+    return s.replace(rSlash, '\\\\')
+            .replace(rQuot, '\\\"')
+            .replace(rNewline, '\\n')
+            .replace(rCr, '\\r');
+  }
+
+  function chooseMethod(s) {
+    return (~s.indexOf('.')) ? 'd' : 'f';
+  }
+
+  function walk(tree) {
+    var code = '';
+    for (var i = 0, l = tree.length; i < l; i++) {
+      var tag = tree[i].tag;
+      if (tag == '#') {
+        code += section(tree[i].nodes, tree[i].n, chooseMethod(tree[i].n),
+                        tree[i].i, tree[i].end, tree[i].otag + " " + tree[i].ctag);
+      } else if (tag == '^') {
+        code += invertedSection(tree[i].nodes, tree[i].n,
+                                chooseMethod(tree[i].n));
+      } else if (tag == '<' || tag == '>') {
+        code += partial(tree[i]);
+      } else if (tag == '{' || tag == '&') {
+        code += tripleStache(tree[i].n, chooseMethod(tree[i].n));
+      } else if (tag == '\n') {
+        code += text('"\\n"' + (tree.length-1 == i ? '' : ' + i'));
+      } else if (tag == '_v') {
+        code += variable(tree[i].n, chooseMethod(tree[i].n));
+      } else if (tag === undefined) {
+        code += text('"' + esc(tree[i]) + '"');
+      }
+    }
+    return code;
+  }
+
+  function section(nodes, id, method, start, end, tags) {
+    return 'if(_.s(_.' + method + '("' + esc(id) + '",c,p,1),' +
+           'c,p,0,' + start + ',' + end + ',"' + tags + '")){' +
+           '_.rs(c,p,' +
+           'function(c,p,_){' +
+           walk(nodes) +
+           '});c.pop();}';
+  }
+
+  function invertedSection(nodes, id, method) {
+    return 'if(!_.s(_.' + method + '("' + esc(id) + '",c,p,1),c,p,1,0,0,"")){' +
+           walk(nodes) +
+           '};';
+  }
+
+  function partial(tok) {
+    return '_.b(_.rp("' +  esc(tok.n) + '",c,p,"' + (tok.indent || '') + '"));';
+  }
+
+  function tripleStache(id, method) {
+    return '_.b(_.t(_.' + method + '("' + esc(id) + '",c,p,0)));';
+  }
+
+  function variable(id, method) {
+    return '_.b(_.v(_.' + method + '("' + esc(id) + '",c,p,0)));';
+  }
+
+  function text(id) {
+    return '_.b(' + id + ');';
+  }
+
+  Hogan.parse = function(tokens, text, options) {
+    options = options || {};
+    return buildTree(tokens, '', [], options.sectionTags || []);
+  },
+
+  Hogan.cache = {};
+
+  Hogan.compile = function(text, options) {
+    // options
+    //
+    // asString: false (default)
+    //
+    // sectionTags: [{o: '_foo', c: 'foo'}]
+    // An array of object with o and c fields that indicate names for custom
+    // section tags. The example above allows parsing of {{_foo}}{{/foo}}.
+    //
+    // delimiters: A string that overrides the default delimiters.
+    // Example: "<% %>"
+    //
+    options = options || {};
+
+    var key = text + '||' + !!options.asString;
+
+    var t = this.cache[key];
+
+    if (t) {
+      return t;
+    }
+
+    t = this.generate(this.parse(this.scan(text, options.delimiters), text, options), text, options);
+    return this.cache[key] = t;
+  };
+})(typeof exports !== 'undefined' ? exports : Hogan);
+
+});
+require.register("matthewmueller-hogan/index.js", function(exports, require, module){
+/**
+ * Module dependencies
+ */
+
+var Hogan = require('./hogan');
+
+/**
+ * Expose `render()`.`
+ */
+
+exports = module.exports = render;
+
+/**
+ * Expose `compile()`.
+ */
+
+exports.compile = compile;
+
+/**
+ * Render the given mustache `str` with `obj`.
+ *
+ * @param {String} str
+ * @param {Object} obj
+ * @return {String}
+ * @api public
+ */
+
+function render(str, obj) {
+  var fn = compile(str);
+  return fn(obj || {});
+}
+
+/**
+ * Compile the given `str` to a `Function`.
+ *
+ * @param {String} str
+ * @param {Object} opts
+ * @return {Function}
+ * @api public
+ */
+
+function compile(str, opts) {
+  var tpl = Hogan.compile(str, opts);
+  return bind(tpl.render, tpl);
+}
+
+/**
+ * bind the function to a particular context
+ * @param  {Function} fn
+ * @param  {object}   context
+ */
+
+function bind(fn, context) {
+  return function() { return fn.apply(context, arguments); };
+}
+
+});
+require.register("component-domify/index.js", function(exports, require, module){
+
+/**
+ * Expose `parse`.
+ */
+
+module.exports = parse;
+
+/**
+ * Wrap map from jquery.
+ */
+
+var map = {
+  option: [1, '<select multiple="multiple">', '</select>'],
+  optgroup: [1, '<select multiple="multiple">', '</select>'],
+  legend: [1, '<fieldset>', '</fieldset>'],
+  thead: [1, '<table>', '</table>'],
+  tbody: [1, '<table>', '</table>'],
+  tfoot: [1, '<table>', '</table>'],
+  colgroup: [1, '<table>', '</table>'],
+  caption: [1, '<table>', '</table>'],
+  tr: [2, '<table><tbody>', '</tbody></table>'],
+  td: [3, '<table><tbody><tr>', '</tr></tbody></table>'],
+  th: [3, '<table><tbody><tr>', '</tr></tbody></table>'],
+  col: [2, '<table><tbody></tbody><colgroup>', '</colgroup></table>'],
+  _default: [0, '', '']
+};
+
+/**
+ * Parse `html` and return the children.
+ *
+ * @param {String} html
+ * @return {Array}
+ * @api private
+ */
+
+function parse(html) {
+  if ('string' != typeof html) throw new TypeError('String expected');
+  
+  // tag name
+  var m = /<([\w:]+)/.exec(html);
+  if (!m) throw new Error('No elements were generated.');
+  var tag = m[1];
+  
+  // body support
+  if (tag == 'body') {
+    var el = document.createElement('html');
+    el.innerHTML = html;
+    return [el.removeChild(el.lastChild)];
+  }
+  
+  // wrap map
+  var wrap = map[tag] || map._default;
+  var depth = wrap[0];
+  var prefix = wrap[1];
+  var suffix = wrap[2];
+  var el = document.createElement('div');
+  el.innerHTML = prefix + html + suffix;
+  while (depth--) el = el.lastChild;
+
+  return orphan(el.children);
+}
+
+/**
+ * Orphan `els` and return an array.
+ *
+ * @param {NodeList} els
+ * @return {Array}
+ * @api private
+ */
+
+function orphan(els) {
+  var ret = [];
+
+  while (els.length) {
+    ret.push(els[0].parentNode.removeChild(els[0]));
+  }
+
+  return ret;
+}
+
+});
+require.register("component-type/index.js", function(exports, require, module){
+
+/**
+ * toString ref.
+ */
+
+var toString = Object.prototype.toString;
+
+/**
+ * Return the type of `val`.
+ *
+ * @param {Mixed} val
+ * @return {String}
+ * @api public
+ */
+
+module.exports = function(val){
+  switch (toString.call(val)) {
+    case '[object Function]': return 'function';
+    case '[object Date]': return 'date';
+    case '[object RegExp]': return 'regexp';
+    case '[object Arguments]': return 'arguments';
+    case '[object Array]': return 'array';
+    case '[object String]': return 'string';
+  }
+
+  if (val === null) return 'null';
+  if (val === undefined) return 'undefined';
+  if (val && val.nodeType === 1) return 'element';
+  if (val === Object(val)) return 'object';
+
+  return typeof val;
+};
+
+});
+require.register("component-event/index.js", function(exports, require, module){
+
+/**
+ * Bind `el` event `type` to `fn`.
+ *
+ * @param {Element} el
+ * @param {String} type
+ * @param {Function} fn
+ * @param {Boolean} capture
+ * @return {Function}
+ * @api public
+ */
+
+exports.bind = function(el, type, fn, capture){
+  if (el.addEventListener) {
+    el.addEventListener(type, fn, capture || false);
+  } else {
+    el.attachEvent('on' + type, fn);
+  }
+  return fn;
+};
+
+/**
+ * Unbind `el` event `type`'s callback `fn`.
+ *
+ * @param {Element} el
+ * @param {String} type
+ * @param {Function} fn
+ * @param {Boolean} capture
+ * @return {Function}
+ * @api public
+ */
+
+exports.unbind = function(el, type, fn, capture){
+  if (el.removeEventListener) {
+    el.removeEventListener(type, fn, capture || false);
+  } else {
+    el.detachEvent('on' + type, fn);
+  }
+  return fn;
+};
+
+});
+require.register("component-matches-selector/index.js", function(exports, require, module){
+/**
+ * Module dependencies.
+ */
+
+var query = require('query');
+
+/**
+ * Element prototype.
+ */
+
+var proto = Element.prototype;
+
+/**
+ * Vendor function.
+ */
+
+var vendor = proto.matchesSelector
+  || proto.webkitMatchesSelector
+  || proto.mozMatchesSelector
+  || proto.msMatchesSelector
+  || proto.oMatchesSelector;
+
+/**
+ * Expose `match()`.
+ */
+
+module.exports = match;
+
+/**
+ * Match `el` to `selector`.
+ *
+ * @param {Element} el
+ * @param {String} selector
+ * @return {Boolean}
+ * @api public
+ */
+
+function match(el, selector) {
+  if (vendor) return vendor.call(el, selector);
+  var nodes = query.all(selector, el.parentNode);
+  for (var i = 0; i < nodes.length; ++i) {
+    if (nodes[i] == el) return true;
+  }
+  return false;
+}
+
+});
+require.register("component-delegate/index.js", function(exports, require, module){
+/**
+ * Module dependencies.
+ */
+
+var matches = require('matches-selector')
+  , event = require('event');
+
+/**
+ * Delegate event `type` to `selector`
+ * and invoke `fn(e)`. A callback function
+ * is returned which may be passed to `.unbind()`.
+ *
+ * @param {Element} el
+ * @param {String} selector
+ * @param {String} type
+ * @param {Function} fn
+ * @param {Boolean} capture
+ * @return {Function}
+ * @api public
+ */
+
+exports.bind = function(el, selector, type, fn, capture){
+  return event.bind(el, type, function(e){
+    if (matches(e.target || e.srcElement, selector)) fn.call(el, e);
+  }, capture);
+};
+
+/**
+ * Unbind event `type`'s callback `fn`.
+ *
+ * @param {Element} el
+ * @param {String} type
+ * @param {Function} fn
+ * @param {Boolean} capture
+ * @api public
+ */
+
+exports.unbind = function(el, type, fn, capture){
+  event.unbind(el, type, fn, capture);
+};
+
+});
+require.register("component-indexof/index.js", function(exports, require, module){
+
+var indexOf = [].indexOf;
+
+module.exports = function(arr, obj){
+  if (indexOf) return arr.indexOf(obj);
+  for (var i = 0; i < arr.length; ++i) {
+    if (arr[i] === obj) return i;
+  }
+  return -1;
+};
+});
+require.register("component-classes/index.js", function(exports, require, module){
+
+/**
+ * Module dependencies.
+ */
+
+var index = require('indexof');
+
+/**
+ * Whitespace regexp.
+ */
+
+var re = /\s+/;
+
+/**
+ * toString reference.
+ */
+
+var toString = Object.prototype.toString;
+
+/**
+ * Wrap `el` in a `ClassList`.
+ *
+ * @param {Element} el
+ * @return {ClassList}
+ * @api public
+ */
+
+module.exports = function(el){
+  return new ClassList(el);
+};
+
+/**
+ * Initialize a new ClassList for `el`.
+ *
+ * @param {Element} el
+ * @api private
+ */
+
+function ClassList(el) {
+  this.el = el;
+  this.list = el.classList;
+}
+
+/**
+ * Add class `name` if not already present.
+ *
+ * @param {String} name
+ * @return {ClassList}
+ * @api public
+ */
+
+ClassList.prototype.add = function(name){
+  // classList
+  if (this.list) {
+    this.list.add(name);
+    return this;
+  }
+
+  // fallback
+  var arr = this.array();
+  var i = index(arr, name);
+  if (!~i) arr.push(name);
+  this.el.className = arr.join(' ');
+  return this;
+};
+
+/**
+ * Remove class `name` when present, or
+ * pass a regular expression to remove
+ * any which match.
+ *
+ * @param {String|RegExp} name
+ * @return {ClassList}
+ * @api public
+ */
+
+ClassList.prototype.remove = function(name){
+  if ('[object RegExp]' == toString.call(name)) {
+    return this.removeMatching(name);
+  }
+
+  // classList
+  if (this.list) {
+    this.list.remove(name);
+    return this;
+  }
+
+  // fallback
+  var arr = this.array();
+  var i = index(arr, name);
+  if (~i) arr.splice(i, 1);
+  this.el.className = arr.join(' ');
+  return this;
+};
+
+/**
+ * Remove all classes matching `re`.
+ *
+ * @param {RegExp} re
+ * @return {ClassList}
+ * @api private
+ */
+
+ClassList.prototype.removeMatching = function(re){
+  var arr = this.array();
+  for (var i = 0; i < arr.length; i++) {
+    if (re.test(arr[i])) {
+      this.remove(arr[i]);
+    }
+  }
+  return this;
+};
+
+/**
+ * Toggle class `name`.
+ *
+ * @param {String} name
+ * @return {ClassList}
+ * @api public
+ */
+
+ClassList.prototype.toggle = function(name){
+  // classList
+  if (this.list) {
+    this.list.toggle(name);
+    return this;
+  }
+
+  // fallback
+  if (this.has(name)) {
+    this.remove(name);
+  } else {
+    this.add(name);
+  }
+  return this;
+};
+
+/**
+ * Return an array of classes.
+ *
+ * @return {Array}
+ * @api public
+ */
+
+ClassList.prototype.array = function(){
+  var arr = this.el.className.split(re);
+  if ('' === arr[0]) arr.pop();
+  return arr;
+};
+
+/**
+ * Check if class `name` is present.
+ *
+ * @param {String} name
+ * @return {ClassList}
+ * @api public
+ */
+
+ClassList.prototype.has =
+ClassList.prototype.contains = function(name){
+  return this.list
+    ? this.list.contains(name)
+    : !! ~index(this.array(), name);
+};
+
+});
+require.register("component-css/index.js", function(exports, require, module){
+
+/**
+ * Properties to ignore appending "px".
+ */
+
+var ignore = {
+  columnCount: true,
+  fillOpacity: true,
+  fontWeight: true,
+  lineHeight: true,
+  opacity: true,
+  orphans: true,
+  widows: true,
+  zIndex: true,
+  zoom: true
+};
+
+/**
+ * Set `el` css values.
+ *
+ * @param {Element} el
+ * @param {Object} obj
+ * @return {Element}
+ * @api public
+ */
+
+module.exports = function(el, obj){
+  for (var key in obj) {
+    var val = obj[key];
+    if ('number' == typeof val && !ignore[key]) val += 'px';
+    el.style[key] = val;
+  }
+  return el;
+};
+
+});
+require.register("component-sort/index.js", function(exports, require, module){
+
+/**
+ * Expose `sort`.
+ */
+
+exports = module.exports = sort;
+
+/**
+ * Sort `el`'s children with the given `fn(a, b)`.
+ *
+ * @param {Element} el
+ * @param {Function} fn
+ * @api public
+ */
+
+function sort(el, fn) {
+  var arr = [].slice.call(el.children).sort(fn);
+  var frag = document.createDocumentFragment();
+  for (var i = 0; i < arr.length; i++) {
+    frag.appendChild(arr[i]);
+  }
+  el.appendChild(frag);
+};
+
+/**
+ * Sort descending.
+ *
+ * @param {Element} el
+ * @param {Function} fn
+ * @api public
+ */
+
+exports.desc = function(el, fn){
+  sort(el, function(a, b){
+    return ~fn(a, b) + 1;
+  });
+};
+
+/**
+ * Sort ascending.
+ */
+
+exports.asc = sort;
+
+});
+require.register("component-value/index.js", function(exports, require, module){
+
+/**
+ * Set or get `el`'s' value.
+ *
+ * @param {Element} el
+ * @param {Mixed} val
+ * @return {Mixed}
+ * @api public
+ */
+
+module.exports = function(el, val){
+  if (2 == arguments.length) return set(el, val);
+  return get(el);
+};
+
+/**
+ * Get `el`'s value.
+ */
+
+function get(el) {
+  switch (type(el)) {
+    case 'checkbox':
+      if (el.checked) {
+        var attr = el.getAttribute('value');
+        return null == attr ? true : attr;
+      } else {
+        return false;
+      }
+    default:
+      return el.value;
+  }
+}
+
+/**
+ * Set `el`'s value.
+ */
+
+function set(el, val) {
+  switch (type(el)) {
+    case 'checkbox':
+      if (val) {
+        el.checked = true;
+      } else {
+        el.checked = false;
+      }
+      break;
+    default:
+      el.value = val;
+  }
+}
+
+/**
+ * Element type.
+ */
+
+function type(el) {
+  var name = el.nodeName.toLowerCase();
+  var type = el.getAttribute('type');
+  if ('input' == name && type && 'checkbox' == type.toLowerCase()) return 'checkbox';
+  return name;
+}
+
+});
+require.register("component-query/index.js", function(exports, require, module){
+
+function one(selector, el) {
+  return el.querySelector(selector);
+}
+
+exports = module.exports = function(selector, el){
+  el = el || document;
+  return one(selector, el);
+};
+
+exports.all = function(selector, el){
+  el = el || document;
+  return el.querySelectorAll(selector);
+};
+
+exports.engine = function(obj){
+  if (!obj.one) throw new Error('.one callback required');
+  if (!obj.all) throw new Error('.all callback required');
+  one = obj.one;
+  exports.all = obj.all;
+};
+
+});
+require.register("component-dom/index.js", function(exports, require, module){
+/**
+ * Module dependencies.
+ */
+
+var delegate = require('delegate');
+var classes = require('classes');
+var indexof = require('indexof');
+var domify = require('domify');
+var events = require('event');
+var value = require('value');
+var query = require('query');
+var type = require('type');
+var css = require('css');
+
+/**
+ * Attributes supported.
+ */
+
+var attrs = [
+  'id',
+  'src',
+  'rel',
+  'cols',
+  'rows',
+  'name',
+  'href',
+  'title',
+  'style',
+  'width',
+  'height',
+  'tabindex',
+  'placeholder'
+];
+
+/**
+ * Expose `dom()`.
+ */
+
+exports = module.exports = dom;
+
+/**
+ * Expose supported attrs.
+ */
+
+exports.attrs = attrs;
+
+/**
+ * Return a dom `List` for the given
+ * `html`, selector, or element.
+ *
+ * @param {String|Element|List}
+ * @return {List}
+ * @api public
+ */
+
+function dom(selector, context) {
+  // array
+  if (Array.isArray(selector)) {
+    return new List(selector);
+  }
+
+  // List
+  if (selector instanceof List) {
+    return selector;
+  }
+
+  // node
+  if (selector.nodeName) {
+    return new List([selector]);
+  }
+
+  if ('string' != typeof selector) {
+    throw new TypeError('invalid selector');
+  }
+
+  // html
+  if ('<' == selector.charAt(0)) {
+    return new List([domify(selector)[0]], selector);
+  }
+
+  // selector
+  var ctx = context
+    ? (context.els ? context.els[0] : context)
+    : document;
+
+  return new List(query.all(selector, ctx), selector);
+}
+
+/**
+ * Expose `List` constructor.
+ */
+
+exports.List = List;
+
+/**
+ * Initialize a new `List` with the
+ * given array-ish of `els` and `selector`
+ * string.
+ *
+ * @param {Mixed} els
+ * @param {String} selector
+ * @api private
+ */
+
+function List(els, selector) {
+  this.els = els || [];
+  this.selector = selector;
+}
+
+/**
+ * Enumerable iterator.
+ */
+
+List.prototype.__iterate__ = function(){
+  var self = this;
+  return {
+    length: function(){ return self.els.length },
+    get: function(i){ return new List([self.els[i]]) }
+  }
+};
+
+/**
+ * Remove elements from the DOM.
+ *
+ * @api public
+ */
+
+List.prototype.remove = function(){
+  for (var i = 0; i < this.els.length; i++) {
+    var el = this.els[i];
+    var parent = el.parentNode;
+    if (parent) parent.removeChild(el);
+  }
+};
+
+/**
+ * Set attribute `name` to `val`, or get attr `name`.
+ *
+ * @param {String} name
+ * @param {String} [val]
+ * @return {String|List} self
+ * @api public
+ */
+
+List.prototype.attr = function(name, val){
+  if (1 == arguments.length) {
+    return this.els[0] && this.els[0].getAttribute(name);
+  }
+
+  return this.forEach(function(el){
+    el.setAttribute(name, val);
+  });
+};
+
+/**
+ * Set property `name` to `val`, or get property `name`.
+ *
+ * @param {String} name
+ * @param {String} [val]
+ * @return {Object|List} self
+ * @api public
+ */
+
+List.prototype.prop = function(name, val){
+  if (1 == arguments.length) {
+    return this.els[0] && this.els[0][name];
+  }
+
+  return this.forEach(function(el){
+    el[name] = val;
+  });
+};
+
+/**
+ * Get the first element's value or set selected
+ * element values to `val`.
+ *
+ * @param {Mixed} [val]
+ * @return {Mixed}
+ * @api public
+ */
+
+List.prototype.val =
+List.prototype.value = function(val){
+  if (0 == arguments.length) {
+    return this.els[0]
+      ? value(this.els[0])
+      : undefined;
+  }
+
+  return this.forEach(function(el){
+    value(el, val);
+  });
+};
+
+/**
+ * Return a cloned `List` with all elements cloned.
+ *
+ * @return {List}
+ * @api public
+ */
+
+List.prototype.clone = function(){
+  var arr = [];
+  for (var i = 0, len = this.els.length; i < len; ++i) {
+    arr.push(this.els[i].cloneNode(true));
+  }
+  return new List(arr);
+};
+
+/**
+ * Prepend `val`.
+ *
+ * @param {String|Element|List} val
+ * @return {List} new list
+ * @api public
+ */
+
+List.prototype.prepend = function(val){
+  var el = this.els[0];
+  if (!el) return this;
+  val = dom(val);
+  for (var i = 0; i < val.els.length; ++i) {
+    if (el.children.length) {
+      el.insertBefore(val.els[i], el.firstChild);
+    } else {
+      el.appendChild(val.els[i]);
+    }
+  }
+  return val;
+};
+
+/**
+ * Append `val`.
+ *
+ * @param {String|Element|List} val
+ * @return {List} new list
+ * @api public
+ */
+
+List.prototype.append = function(val){
+  var el = this.els[0];
+  if (!el) return this;
+  val = dom(val);
+  for (var i = 0; i < val.els.length; ++i) {
+    el.appendChild(val.els[i]);
+  }
+  return val;
+};
+
+/**
+ * Append self's `el` to `val`
+ *
+ * @param {String|Element|List} val
+ * @return {List} self
+ * @api public
+ */
+
+List.prototype.appendTo = function(val){
+  dom(val).append(this);
+  return this;
+};
+
+/**
+ * Return a `List` containing the element at `i`.
+ *
+ * @param {Number} i
+ * @return {List}
+ * @api public
+ */
+
+List.prototype.at = function(i){
+  return new List([this.els[i]], this.selector);
+};
+
+/**
+ * Return a `List` containing the first element.
+ *
+ * @param {Number} i
+ * @return {List}
+ * @api public
+ */
+
+List.prototype.first = function(){
+  return new List([this.els[0]], this.selector);
+};
+
+/**
+ * Return a `List` containing the last element.
+ *
+ * @param {Number} i
+ * @return {List}
+ * @api public
+ */
+
+List.prototype.last = function(){
+  return new List([this.els[this.els.length - 1]], this.selector);
+};
+
+/**
+ * Return an `Element` at `i`.
+ *
+ * @param {Number} i
+ * @return {Element}
+ * @api public
+ */
+
+List.prototype.get = function(i){
+  return this.els[i || 0];
+};
+
+/**
+ * Return list length.
+ *
+ * @return {Number}
+ * @api public
+ */
+
+List.prototype.length = function(){
+  return this.els.length;
+};
+
+/**
+ * Return element text.
+ *
+ * @param {String} str
+ * @return {String|List}
+ * @api public
+ */
+
+List.prototype.text = function(str){
+  // TODO: real impl
+  if (1 == arguments.length) {
+    this.forEach(function(el){
+      el.textContent = str;
+    });
+    return this;
+  }
+
+  var str = '';
+  for (var i = 0; i < this.els.length; ++i) {
+    str += this.els[i].textContent;
+  }
+  return str;
+};
+
+/**
+ * Return element html.
+ *
+ * @return {String} html
+ * @api public
+ */
+
+List.prototype.html = function(html){
+  if (1 == arguments.length) {
+    this.forEach(function(el){
+      el.innerHTML = html;
+    });
+  }
+  // TODO: real impl
+  return this.els[0] && this.els[0].innerHTML;
+};
+
+/**
+ * Bind to `event` and invoke `fn(e)`. When
+ * a `selector` is given then events are delegated.
+ *
+ * @param {String} event
+ * @param {String} [selector]
+ * @param {Function} fn
+ * @param {Boolean} capture
+ * @return {List}
+ * @api public
+ */
+
+List.prototype.on = function(event, selector, fn, capture){
+  if ('string' == typeof selector) {
+    for (var i = 0; i < this.els.length; ++i) {
+      fn._delegate = delegate.bind(this.els[i], selector, event, fn, capture);
+    }
+    return this;
+  }
+
+  capture = fn;
+  fn = selector;
+
+  for (var i = 0; i < this.els.length; ++i) {
+    events.bind(this.els[i], event, fn, capture);
+  }
+
+  return this;
+};
+
+/**
+ * Unbind to `event` and invoke `fn(e)`. When
+ * a `selector` is given then delegated event
+ * handlers are unbound.
+ *
+ * @param {String} event
+ * @param {String} [selector]
+ * @param {Function} fn
+ * @param {Boolean} capture
+ * @return {List}
+ * @api public
+ */
+
+List.prototype.off = function(event, selector, fn, capture){
+  if ('string' == typeof selector) {
+    for (var i = 0; i < this.els.length; ++i) {
+      // TODO: add selector support back
+      delegate.unbind(this.els[i], event, fn._delegate, capture);
+    }
+    return this;
+  }
+
+  capture = fn;
+  fn = selector;
+
+  for (var i = 0; i < this.els.length; ++i) {
+    events.unbind(this.els[i], event, fn, capture);
+  }
+  return this;
+};
+
+/**
+ * Iterate elements and invoke `fn(list, i)`.
+ *
+ * @param {Function} fn
+ * @return {List} self
+ * @api public
+ */
+
+List.prototype.each = function(fn){
+  for (var i = 0; i < this.els.length; ++i) {
+    fn(new List([this.els[i]], this.selector), i);
+  }
+  return this;
+};
+
+/**
+ * Iterate elements and invoke `fn(el, i)`.
+ *
+ * @param {Function} fn
+ * @return {List} self
+ * @api public
+ */
+
+List.prototype.forEach = function(fn){
+  for (var i = 0; i < this.els.length; ++i) {
+    fn(this.els[i], i);
+  }
+  return this;
+};
+
+/**
+ * Map elements invoking `fn(list, i)`.
+ *
+ * @param {Function} fn
+ * @return {Array}
+ * @api public
+ */
+
+List.prototype.map = function(fn){
+  var arr = [];
+  for (var i = 0; i < this.els.length; ++i) {
+    arr.push(fn(new List([this.els[i]], this.selector), i));
+  }
+  return arr;
+};
+
+/**
+ * Filter elements invoking `fn(list, i)`, returning
+ * a new `List` of elements when a truthy value is returned.
+ *
+ * @param {Function} fn
+ * @return {List}
+ * @api public
+ */
+
+List.prototype.select =
+List.prototype.filter = function(fn){
+  var el;
+  var list = new List([], this.selector);
+  for (var i = 0; i < this.els.length; ++i) {
+    el = this.els[i];
+    if (fn(new List([el], this.selector), i)) list.els.push(el);
+  }
+  return list;
+};
+
+/**
+ * Add the given class `name`.
+ *
+ * @param {String} name
+ * @return {List} self
+ * @api public
+ */
+
+List.prototype.addClass = function(name){
+  var el;
+  for (var i = 0; i < this.els.length; ++i) {
+    el = this.els[i];
+    el._classes = el._classes || classes(el);
+    el._classes.add(name);
+  }
+  return this;
+};
+
+/**
+ * Remove the given class `name`.
+ *
+ * @param {String|RegExp} name
+ * @return {List} self
+ * @api public
+ */
+
+List.prototype.removeClass = function(name){
+  var el;
+
+  if ('regexp' == type(name)) {
+    for (var i = 0; i < this.els.length; ++i) {
+      el = this.els[i];
+      el._classes = el._classes || classes(el);
+      var arr = el._classes.array();
+      for (var j = 0; j < arr.length; j++) {
+        if (name.test(arr[j])) {
+          el._classes.remove(arr[j]);
+        }
+      }
+    }
+    return this;
+  }
+
+  for (var i = 0; i < this.els.length; ++i) {
+    el = this.els[i];
+    el._classes = el._classes || classes(el);
+    el._classes.remove(name);
+  }
+
+  return this;
+};
+
+/**
+ * Toggle the given class `name`,
+ * optionally a `bool` may be given
+ * to indicate that the class should
+ * be added when truthy.
+ *
+ * @param {String} name
+ * @param {Boolean} bool
+ * @return {List} self
+ * @api public
+ */
+
+List.prototype.toggleClass = function(name, bool){
+  var el;
+  var fn = 'toggle';
+
+  // toggle with boolean
+  if (2 == arguments.length) {
+    fn = bool ? 'add' : 'remove';
+  }
+
+  for (var i = 0; i < this.els.length; ++i) {
+    el = this.els[i];
+    el._classes = el._classes || classes(el);
+    el._classes[fn](name);
+  }
+
+  return this;
+};
+
+/**
+ * Check if the given class `name` is present.
+ *
+ * @param {String} name
+ * @return {Boolean}
+ * @api public
+ */
+
+List.prototype.hasClass = function(name){
+  var el;
+  for (var i = 0; i < this.els.length; ++i) {
+    el = this.els[i];
+    el._classes = el._classes || classes(el);
+    if (el._classes.has(name)) return true;
+  }
+  return false;
+};
+
+/**
+ * Set CSS `prop` to `val` or get `prop` value.
+ * Also accepts an object (`prop`: `val`)
+ *
+ * @param {String} prop
+ * @param {Mixed} val
+ * @return {List|String}
+ * @api public
+ */
+
+List.prototype.css = function(prop, val){
+  if (2 == arguments.length) {
+    var obj = {};
+    obj[prop] = val;
+    return this.setStyle(obj);
+  }
+
+  if ('object' == type(prop)) {
+    return this.setStyle(prop);
+  }
+
+  return this.getStyle(prop);
+};
+
+/**
+ * Set CSS `props`.
+ *
+ * @param {Object} props
+ * @return {List} self
+ * @api private
+ */
+
+List.prototype.setStyle = function(props){
+  for (var i = 0; i < this.els.length; ++i) {
+    css(this.els[i], props);
+  }
+  return this;
+};
+
+/**
+ * Get CSS `prop` value.
+ *
+ * @param {String} prop
+ * @return {String}
+ * @api private
+ */
+
+List.prototype.getStyle = function(prop){
+  var el = this.els[0];
+  if (el) return el.style[prop];
+};
+
+/**
+ * Find children matching the given `selector`.
+ *
+ * @param {String} selector
+ * @return {List}
+ * @api public
+ */
+
+List.prototype.find = function(selector){
+  return dom(selector, this);
+};
+
+/**
+ * Empty the dom list
+ *
+ * @return self
+ * @api public
+ */
+
+List.prototype.empty = function(){
+  var elem, el;
+
+  for (var i = 0; i < this.els.length; ++i) {
+    el = this.els[i];
+    while (el.firstChild) {
+      el.removeChild(el.firstChild);
+    }
+  }
+
+  return this;
+}
+
+/**
+ * Attribute accessors.
+ */
+
+attrs.forEach(function(name){
+  List.prototype[name] = function(val){
+    if (0 == arguments.length) return this.attr(name);
+    return this.attr(name, val);
+  };
+});
+
+
+});
+require.register("manuelstofer-each/index.js", function(exports, require, module){
+"use strict";
+
+var nativeForEach = [].forEach;
+
+// Underscore's each function
+module.exports = function (obj, iterator, context) {
+    if (obj == null) return;
+    if (nativeForEach && obj.forEach === nativeForEach) {
+        obj.forEach(iterator, context);
+    } else if (obj.length === +obj.length) {
+        for (var i = 0, l = obj.length; i < l; i++) {
+            if (iterator.call(context, obj[i], i, obj) === {}) return;
+        }
+    } else {
+        for (var key in obj) {
+            if (Object.prototype.hasOwnProperty.call(obj, key)) {
+                if (iterator.call(context, obj[key], key, obj) === {}) return;
+            }
+        }
+    }
+};
+
+});
+require.register("component-emitter/index.js", function(exports, require, module){
+
+/**
+ * Module dependencies.
+ */
+
+var index = require('indexof');
+
+/**
+ * Expose `Emitter`.
+ */
+
+module.exports = Emitter;
+
+/**
+ * Initialize a new `Emitter`.
+ *
+ * @api public
+ */
+
+function Emitter(obj) {
+  if (obj) return mixin(obj);
+};
+
+/**
+ * Mixin the emitter properties.
+ *
+ * @param {Object} obj
+ * @return {Object}
+ * @api private
+ */
+
+function mixin(obj) {
+  for (var key in Emitter.prototype) {
+    obj[key] = Emitter.prototype[key];
+  }
+  return obj;
+}
+
+/**
+ * Listen on the given `event` with `fn`.
+ *
+ * @param {String} event
+ * @param {Function} fn
+ * @return {Emitter}
+ * @api public
+ */
+
+Emitter.prototype.on = function(event, fn){
+  this._callbacks = this._callbacks || {};
+  (this._callbacks[event] = this._callbacks[event] || [])
+    .push(fn);
+  return this;
+};
+
+/**
+ * Adds an `event` listener that will be invoked a single
+ * time then automatically removed.
+ *
+ * @param {String} event
+ * @param {Function} fn
+ * @return {Emitter}
+ * @api public
+ */
+
+Emitter.prototype.once = function(event, fn){
+  var self = this;
+  this._callbacks = this._callbacks || {};
+
+  function on() {
+    self.off(event, on);
+    fn.apply(this, arguments);
+  }
+
+  fn._off = on;
+  this.on(event, on);
+  return this;
+};
+
+/**
+ * Remove the given callback for `event` or all
+ * registered callbacks.
+ *
+ * @param {String} event
+ * @param {Function} fn
+ * @return {Emitter}
+ * @api public
+ */
+
+Emitter.prototype.off =
+Emitter.prototype.removeListener =
+Emitter.prototype.removeAllListeners = function(event, fn){
+  this._callbacks = this._callbacks || {};
+
+  // all
+  if (0 == arguments.length) {
+    this._callbacks = {};
+    return this;
+  }
+
+  // specific event
+  var callbacks = this._callbacks[event];
+  if (!callbacks) return this;
+
+  // remove all handlers
+  if (1 == arguments.length) {
+    delete this._callbacks[event];
+    return this;
+  }
+
+  // remove specific handler
+  var i = index(callbacks, fn._off || fn);
+  if (~i) callbacks.splice(i, 1);
+  return this;
+};
+
+/**
+ * Emit `event` with the given args.
+ *
+ * @param {String} event
+ * @param {Mixed} ...
+ * @return {Emitter}
+ */
+
+Emitter.prototype.emit = function(event){
+  this._callbacks = this._callbacks || {};
+  var args = [].slice.call(arguments, 1)
+    , callbacks = this._callbacks[event];
+
+  if (callbacks) {
+    callbacks = callbacks.slice(0);
+    for (var i = 0, len = callbacks.length; i < len; ++i) {
+      callbacks[i].apply(this, args);
+    }
+  }
+
+  return this;
+};
+
+/**
+ * Return array of callbacks for `event`.
+ *
+ * @param {String} event
+ * @return {Array}
+ * @api public
+ */
+
+Emitter.prototype.listeners = function(event){
+  this._callbacks = this._callbacks || {};
+  return this._callbacks[event] || [];
+};
+
+/**
+ * Check if this emitter has `event` handlers.
+ *
+ * @param {String} event
+ * @return {Boolean}
+ * @api public
+ */
+
+Emitter.prototype.hasListeners = function(event){
+  return !! this.listeners(event).length;
+};
+
+});
+require.register("gorillatron-extend/index.js", function(exports, require, module){
+/*
+ * @exports extend
+*/
+
+/**
+  Extends a set of objects. Merges them into one new object
+  @public
+  @type Function
+  @param {Boolean} deep Should it extend all child objects
+  @param []{Object} splat objects to merge
+*/
+function extend( deep ) {
+  var out, objs, i, obj, prop, val
+
+  out = {}
+
+  typeof deep === "boolean" ? ( objs = [].slice.call(arguments, 1), deep = deep ) :
+                              ( objs = [].slice.call(arguments, 0), deep = false )
+
+  for( i = 0; i < objs.length; i++ ) {
+
+    obj = objs[ i ]
+
+    for( prop in obj ) {
+      val = obj[ prop ]
+      if( deep && typeof val === "object" && typeof out[prop] === "object") {
+        out[ prop ] = extend( out[prop], val )
+      } else {
+        out[ prop ] = val
+      }
+      
+    }
+  }
+
+  return out
+}
+
+
+module.exports = extend;
+ 
+
+});
+require.register("jsantell-rotate/index.js", function(exports, require, module){
+/**
+ * rotate becomes the function that
+ * is exposed
+ */
+
+var rotate = (function () {
+  var el = document.createElement('div');
+  var style = el.style;
+  var css3Prop = 
+    (style.transform       !== undefined && 'transform')       ||
+    (style.webkitTransform !== undefined && 'webkitTransform') ||
+    (style.MozTransform    !== undefined && 'MozTransform')    ||
+    (style.msTransform     !== undefined && 'msTransform');
+
+  if (css3Prop) {
+    return makeCSS3Rotate(css3Prop);
+  } else {
+    // TODO implement rotation support for < IE8 ?
+    return function () {};
+  }
+})();
+
+/**
+ * Returns a function that takes an element
+ * and rotates it by degrees, based off of
+ * CSS3 syntax on style property `prop`
+ *
+ * @param {String} prop
+ * @return {Function}
+ * @api private
+ */
+
+function makeCSS3Rotate (prop) {
+  return function (el, deg) {
+    el.style[ prop ] = 'rotate(' + deg + 'deg)';
+  };
+}
+
+/**
+ * Expose generated rotate function
+ */
+
+module.exports = rotate;
+
+});
+require.register("jsantell-dial/index.js", function(exports, require, module){
+/**
+ * Module dependencies
+ */
+
+var
+  Emitter   = require('emitter'),
+  events    = require('event'),
+  domify    = require('domify'),
+  rotate    = require('rotate'),
+  extend    = require('extend'),
+  template  = require('./template');
+
+/**
+ * Expose `Dial`
+ */
+
+module.exports = Dial;
+
+/**
+ * A constructor for a Dial object,
+ * creating a radial UI dial controlling
+ * an input field
+ *
+ * Options
+ *
+ * - `min` minimum value
+ * - `max` maximum value
+ * - `float` boolean determing whether floats are allowed
+ * - `increment` value to increment by
+ * - `value` starting value
+ *
+ * @param {HTMLInputElement} input
+ * @param {Object} options
+ * @api public
+ */
+
+function Dial (input, options) {
+  this.input = input;
+  this.options = extend(false,
+    Dial.defaults,
+    optionsFromAttrs(this.input),
+    options
+  );
+
+  Emitter(this);
+
+  this.value = this.options.value;
+
+  this
+    .setDefaultIncrement()
+    .render()
+    .bind()
+    .hideInput();
+
+  this.input.parentNode.appendChild(this.el);
+  this.rotate();
+}
+
+/**
+ * Defaults for each dial.
+ * Increment is handled in setDefaultIncrement
+ */
+
+Dial.defaults = {
+  min: 0,
+  max: 10,
+  value: 5,
+  float: false,
+  increment: null
+};
+
+/**
+ * Creates the dial's `el` property
+ *
+ * @return {Dial}
+ * @api public
+ */
+
+Dial.prototype.render = function () {
+  this.el = domify(template)[0];
+  return this;
+};
+
+/**
+ * Binds mouse events for the dial element,
+ * and on document if not already bound
+ *
+ * @return {Dial}
+ * @api public
+ */
+
+Dial.prototype.bind = function () {
+  var that = this;
+
+  events.bind(this.el, 'mousedown', mouseDownHandler);
+  events.bind(this.input, 'change', inputChangeHandler);
+
+  // Bind mouseup and movemouse handlers
+  // to document for better dragging
+  if (!Dial.docEventsBound) {
+    events.bind(document, 'mouseup', onMouseUp);
+    events.bind(document, 'mousemove', onMouseMove);
+
+    Dial.docEventsBound = true;
+  }
+  
+  /**
+   * Unbinds dial's events, not on prototype
+   * due to unbinding event on input element in scope
+   *
+   * @return {Dial}
+   * @api public
+   */
+  
+  this.unbind = function () {
+    events.unbind(this.el, 'mousedown');
+    events.unbind(this.input, 'change', inputChangeHandler);
+    return this;
+  };
+
+  function mouseDownHandler () {
+    onMouseDown.apply(that, arguments);
+  }
+
+  function inputChangeHandler () {
+    that.set(this.value);
+  }
+
+  return this;
+};
+
+/**
+ * Removes dial element, reveals original input element,
+ * unbinds dial events.
+ *
+ * @return {Dial}
+ * @api public
+ */
+
+Dial.prototype.destroy = function () {
+  var parent = this.el.parentElement;
+  this.unbind();
+  this.showInput();
+  parent.removeChild(this.el);
+  return this;
+};
+
+/**
+ * Sets the dial's value if in allowed range,
+ * rounds to integer if needed, updates the corresponding
+ * input element, rotates dial and fires a change event
+ *
+ * @param {Number} val
+ * @return {Dial}
+ * @api public
+ */
+
+Dial.prototype.set = function (val) {
+  if (val < this.options.min || val > this.options.max) {
+    return;
+  }
+  if (!this.options.float) {
+    val = ~~val;
+  }
+  this.input.value = val;
+  this.value = val;
+  this.emit('change', val);
+  this.rotate();
+  return this;
+};
+
+/**
+ * Rotates the dial el based off of current
+ * dial's value
+ *
+ * @return {Dial}
+ * @api public
+ */
+
+Dial.prototype.rotate = function () {
+  var MAX_DEG = 270;
+  var shift = 405;
+  var relative = (MAX_DEG / (this.options.max - this.options.min)) *
+    (this.value - this.options.min);
+  var degrees = relative - MAX_DEG + shift;
+
+  rotate(this.el.children[0], degrees);
+
+  return this;
+};
+
+/**
+ * Hides original input element
+ *
+ * @return this;
+ */
+
+Dial.prototype.hideInput = function () {
+  this.originalDisplay = this.originalDisplay || this.input.style.display;
+  this.input.style.display = 'none';
+  return this;
+};
+
+/**
+ * Shows original input element
+ *
+ * @return this;
+ */
+
+Dial.prototype.showInput = function () {
+  this.input.style.display = this.originalDisplay;
+  return this;
+};
+
+/**
+ * If no increment specific in config or attributes,
+ * set an increment of a 1/25th of the allowable range.
+ * Round to integer if necessary.
+ *
+ * @return this
+ * @api public
+ */
+
+Dial.prototype.setDefaultIncrement = function () {
+  var options = this.options;
+  var increment;
+  if (!options.increment) {
+    increment = (options.max - options.min) / 25;
+    if (!options.float) {
+      increment = ~~increment || 1;
+    }
+    options.increment = increment;
+  }
+
+  return this;
+};
+
+/**
+ * Takes an input element and parses attributes
+ * and returns an object containing the attributes
+ * if not empty.
+ *
+ * @param {HTMLInputElement} input
+ * @return {Object}
+ * @api private
+ */
+
+function optionsFromAttrs (input) {
+  var options = {};
+  var min = parseFloatAttr(input, 'min');
+  var max = parseFloatAttr(input, 'max');
+  var value = parseFloatAttr(input, 'value');
+  var float = !!input.getAttribute('data-float');
+  var inc = parseFloatAttr(input, 'increment');
+
+  min   != undefined && (options.min       = min);
+  max   != undefined && (options.max       = max);
+  float != undefined && (options.float     = float);
+  inc   != undefined && (options.increment = inc);
+  value !== ''       && (options.value     = value);
+
+  return options;
+}
+
+/**
+ * Parses an attribute on an element
+ * and returns as float if it exists
+ *
+ * @param {HTMLInputElement} el
+ * @param {String} attr
+ * @return {Mixed}
+ * @api private
+ */
+
+function parseFloatAttr (el, attr) {
+  var value = attr === 'value' ?
+    el.value :
+    el.getAttribute('data-' + attr);
+
+  value = value && parseFloat(value);
+
+  return value;
+}
+
+function onMouseMove (e) {
+  var dial = Dial.activeDial;
+
+  if (!dial) { return; }
+
+  var options = dial.options;
+  var curPos = e.pageX;
+  var lastPos = dial.pos !== undefined ? dial.pos : curPos;
+
+  // Increase
+  if (curPos > lastPos) {
+    dial.set(dial.value + options.increment);
+  // Decrease
+  } else if (curPos < lastPos) {
+    dial.set(dial.value - options.increment);
+  }
+
+  dial.pos = curPos;
+}
+
+function onMouseDown (e) {
+  Dial.activeDial = this;
+  e.preventDefault();
+}
+
+function onMouseUp (e) {
+  Dial.activeDial = null;
+}
+
+});
+require.register("jsantell-dial/template.js", function(exports, require, module){
+module.exports =
+'<div class="dial-container">' +
+  '<div class="dial-rotate">' +
+    '<div class="dial-point"></div>' +
+    '<div class="dial-dial"></div>' +
+  '</div>' +
+'</div>';
+
+});
+require.register("jsantell-button/index.js", function(exports, require, module){
+/**
+ * Module dependencies
+ */
+
+var
+  Emitter   = require('emitter'),
+  events    = require('event'),
+  domify    = require('domify'),
+  classes   = require('classes'),
+  template  = require('./template');
+
+/**
+ * Expose `Button`
+ */
+
+module.exports = Button;
+
+/**
+ * A constructor for a Button object,
+ * creating an on/off button from
+ * a checkbox input
+ *
+ * @param {HTMLInputElement} input
+ * @param {Boolean} value
+ * @api public
+ */
+
+function Button (input, value) {
+  this.input = input;
+  this.value = value !== undefined
+    ? value
+    : input.checked;
+
+  Emitter(this);
+
+  this
+    .render()
+    .bind()
+    .set(this.value)
+    .hideInput();
+
+
+  this.input.parentNode.appendChild(this.el);
+}
+
+/**
+ * Creates the button's `el` property
+ *
+ * @return {Button}
+ * @api public
+ */
+
+Button.prototype.render = function () {
+  this.el = domify(template)[0];
+  return this;
+};
+
+/**
+ * Binds click events for the button element
+ *
+ * @return {Button}
+ * @api public
+ */
+
+Button.prototype.bind = function () {
+  var that = this;
+
+  events.bind(this.el, 'click', clickHandler);
+  events.bind(this.input, 'change', inputChangeHandler);
+
+  /**
+  * Unbinds button's events, not on prototype
+  * due to unbinding event on input element in scope
+  *
+  * @return {Button}
+  * @api public
+  */
+  
+  this.unbind = function () {
+    events.unbind(this.el, 'click');
+    events.unbind(this.input, 'change', inputChangeHandler);
+    return this;
+  };
+  
+  function clickHandler() {
+    onClick.apply(that, arguments);
+  }
+ 
+  function inputChangeHandler () {
+    that.set(that.input.checked);
+  }
+  
+  return this;
+};
+
+/**
+ * Removes button element, reveals original input element,
+ * unbinds button events.
+ *
+ * @return {Button}
+ * @api public
+ */
+
+Button.prototype.destroy = function () {
+  var parent = this.el.parentElement;
+  this.unbind();
+  this.showInput();
+  parent.removeChild(this.el);
+  return this;
+};
+
+/**
+ * Sets the button's value if in allowed range,
+ * rounds to integer if needed, updates the corresponding
+ * input element, rotates button and fires a change event
+ *
+ * @param {Number} val
+ * @return {Button}
+ * @api public
+ */
+
+Button.prototype.set = function (val) {
+  val = !!val;
+  this.input.checked = val;
+  this.value = val;
+  this.emit('change', val);
+  classes(this.el)[val ? 'add' : 'remove']('on');
+  return this;
+};
+
+/**
+ * Hides original input element
+ *
+ * @return {Button}
+ * @api public
+ */
+
+Button.prototype.hideInput = function () {
+  this.originalDisplay = this.originalDisplay || this.input.style.display;
+  this.input.style.display = 'none';
+  return this;
+};
+
+/**
+ * Shows original input element
+ *
+ * @return {Button}
+ * @api public
+ */
+
+Button.prototype.showInput = function () {
+  this.input.style.display = this.originalDisplay;
+  return this;
+};
+
+function onClick (e) {
+  this.set(!this.value);
+}
+
+});
+require.register("jsantell-button/template.js", function(exports, require, module){
+module.exports =
+'<div class="button-container">' +
+  '<div class="button-button"></div>' +
+'</div>';
+
+});
+require.register("web-audio-components-rack/index.js", function(exports, require, module){
+/**
+ * Module dependencies
+ */
+
+var
+  each      = require('each'),
+  dom       = require('dom'),
+  domify    = require('domify'),
+  hogan     = require('hogan'),
+  Dial      = require('dial'),
+  Button    = require('button'),
+  template  = require('./template');
+
+/**
+ * Expose `Rack`
+ */
+
+module.exports = Rack;
+
+/**
+ * A constructor for a Rack object
+ * that takes a web audio component instance
+ * as a parameter
+ *
+ * @param {Object} module
+ * @api public
+ */
+
+function Rack (module) {
+  this.module = module;
+  this.params = (module.meta && module.meta.params) || {};
+  this.render();
+  this.bind();
+}
+
+/**
+ * Creates an element to be injected
+ * into the DOM stored in the rack's `el`
+ * property
+ *
+ * @return {Rack}
+ * @api public
+ */
+
+Rack.prototype.render = function () {
+  var data = getRenderData(this.module);
+  var render = hogan(template, data);
+  this.el = domify(render)[0];
+  return this;
+};
+
+/**
+ * Creates the dial and button UI widgets
+ * and sets events to modify the module
+ * properties on change
+ *
+ * @return {Rack}
+ * @api public
+ */
+
+Rack.prototype.bind = function () {
+  var that = this;
+  var module = this.module;
+  this.controls = [];
+
+  each(this.params, function (props, name) {
+    var $input = dom('.rack-param-input-' + name, that.el);
+    var $feedbackEl = dom('.rack-param-value-' + name, that.el);
+    var input  = $input.els && $input.els[0];
+    var feedbackEl = $feedbackEl.els && $feedbackEl.els[0];
+    var type = props.type;
+    var control;
+
+    if (type === 'float' || type === 'int') {
+      control = createDial(input, props, name, module, feedbackEl);
+    } else if (type === 'bool') {
+      control = createButton(input, name, module);
+    }
+
+    that.controls.push(control);
+  });
+
+  return this;
+};
+
+/**
+ * Unbinds all the controls' event handlers
+ *
+ * @return {Rack}
+ * @api public
+ */
+
+Rack.prototype.unbind = function () {
+  each(this.controls || [], function (control) {
+    control.destroy();
+  });
+  return this;
+};
+
+/**
+ * Destroys rack element, unbinds all events
+ *
+ * @return {Rack}
+ * @api public
+ */
+
+Rack.prototype.destroy = function () {
+  this.unbind();
+  if (this.el.parentElement) {
+    parent.removeChild(this.el);
+  }
+  return this;
+};
+
+/**
+ * Creates a dial for UI controls,
+ * bound to the module's param
+ *
+ * @param {HTMLInputElement} inputEl
+ * @param {Object} props
+ * @param {String} name
+ * @param {Object} module
+ * @param {HTMLDivElement} feedbackEl
+ * @return {Dial}
+ * @api private
+ */
+
+function createDial (inputEl, props, name, module, feedbackEl) {
+  var dial = new Dial(inputEl, {
+    min: props.min,
+    max: props.max,
+    value: module[name],
+    float: props.type === 'float'
+  });
+
+  dial.on('change', function (val) {
+    val = (val || 0).toFixed(2);
+    val = props.type === 'int' ? parseInt(val) : val;
+    feedbackEl.innerHTML = val;
+    module[name] = val;
+  }).emit('change', module[name]);
+
+  return dial;
+}
+
+/**
+ * Creates a button for UI controls,
+ * bound to the module's param
+ *
+ * @param {HTMLInputElement} inputEl
+ * @param {String} name
+ * @param {Object} module
+ * @return {Button}
+ * @api private
+ */
+
+function createButton (inputEl, name, module) {
+  var button = new Button(inputEl, !!module[name]);
+
+  button.on('change', function (val) {
+    module[name] = !!val;
+  }).emit('change', !!module[name]);
+
+  return button;
+}
+
+/**
+ * Creates an object to be used for
+ * passing into the templating engine
+ *
+ * @return {Object}
+ * @api private
+ */
+
+function getRenderData (module) {
+  var meta = module.meta || {};
+  var data = {};
+
+  data.name = format(module.meta.name);
+  data.params = [];
+
+  each(meta.params, function (values, prop) {
+    var value = module[prop];
+    value = value.toFixed ? value.toFixed(2) : value;
+    data.params.push({
+      name: prop,
+      max: values.max,
+      min: values.min,
+      type: values.type,
+      value: value,
+      inputType: values.type === 'bool'
+        ? 'checkbox'
+        : 'number'
+    });
+  });
+
+  return data;
+}
+
+/**
+ * Strips white space, converts to hyphens
+ *
+ * @param {String} string
+ * @return {String}
+ * @api private
+ */
+
+function format (string) {
+  return (string || '').replace(/ /g, '-');
+}
+
+});
+require.register("web-audio-components-rack/template.js", function(exports, require, module){
+module.exports =
+'<div class="rack-container rack-container-{{name}}">' +
+  '<div class="rack-logo"></div>' +
+  '<div class="rack-text">' +
+    '<div class="rack-name">{{name}}</div>' +
+    '<div class="rack-logo-text">Web Audio Component</div>' +
+  '</div>' +
+  '<ul class="rack-params">' +
+    '{{#params}}' +
+      '<li class="rack-param">' +
+        '<div class="rack-param-name">{{name}}</div>' +
+        '<div class="rack-param-control">' +
+          '<input type="{{inputType}}" class="rack-param-input-{{name}}" ' +
+            'data-type="{{type}}" data-name="{{name}}" />' +
+        '</div>' +
+        '<div class="rack-param-value rack-param-value-{{name}}"></div>' +
+      '</li>' +
+    '{{/params}}' +
+  '</ul>' +
+'</div>';
+
+});
+require.register("jsantell-allen/index.js", function(exports, require, module){
+/**
+ * Expose allen.js
+ */
+module.exports = require('./allen.js');
+
+});
+require.register("jsantell-allen/allen.js", function(exports, require, module){
+/*
+ * allen - v0.1.5 - 2013-01-27
+ * http://github.com/jsantell/allen
+ * Copyright (c) 2013 Jordan Santell; Licensed MIT
+ */
+
+(function() {
+  var CODECS, allen, audioEl, canPlay, checkCurrentType, checkProtoChainFor, root, toStringMatch;
+
+  root = this;
+
+  audioEl = this.document && document.createElement('audio');
+
+  allen = {
+    getAudioContext: function() {
+      var ctx;
+      if (this.context != null) {
+        return this.context;
+      }
+      ctx = root.AudioContext || root.webkitAudioContext || root.mozAudioContext;
+      if (ctx) {
+        return this.context = new ctx();
+      } else {
+        return null;
+      }
+    },
+    setAudioContext: function(context) {
+      if (this.isAudioContext(context)) {
+        return this.context = context;
+      } else {
+        throw new Error('setAudioContext only accepts an AudioContext object');
+      }
+    },
+    isAudioContext: function(node) {
+      return checkCurrentType(node, 'AudioContext');
+    },
+    isAudioSource: function(node) {
+      return checkProtoChainFor(node, 'AudioSourceNode');
+    },
+    isAudioNode: function(node) {
+      return checkProtoChainFor(node, 'AudioNode');
+    },
+    isAudioDestination: function(node) {
+      return checkCurrentType(node, 'AudioDestinationNode');
+    },
+    isRegularAudioNode: function(node) {
+      return this.isAudioNode(node) && !this.isAudioDestination(node) && !this.isAudioSource(node);
+    },
+    isAudioParam: function(param) {
+      return checkProtoChainFor(param, 'AudioParam');
+    },
+    getBuffer: function(url, callback, sendImmediately) {
+      var xhr;
+      if (sendImmediately == null) {
+        sendImmediately = true;
+      }
+      xhr = new XMLHttpRequest();
+      xhr.open('GET', url, true);
+      xhr.responseType = 'arraybuffer';
+      xhr.onload = callback;
+      if (sendImmediately) {
+        xhr.send();
+      }
+      return xhr;
+    },
+    canPlayType: function(type) {
+      var codec;
+      codec = CODECS[(type || '').toLowerCase()];
+      if (type === 'm4a') {
+        return canPlay(codec) || canPlay('audio/aac;');
+      } else {
+        return canPlay(codec);
+      }
+    }
+  };
+
+  CODECS = {
+    'mp3': 'audio/mpeg;',
+    'ogg': 'audio/ogg; codecs="vorbis"',
+    'wav': 'audio/wav; codecs="1"',
+    'm4a': 'audio/x-m4a;'
+  };
+
+  canPlay = function(codec) {
+    return !!(audioEl && audioEl.canPlayType && audioEl.canPlayType(codec).replace(/no/, ''));
+  };
+
+  checkCurrentType = function(node, goalName) {
+    var _ref;
+    if (typeof node !== 'object' || !node) {
+      return false;
+    }
+    return (node != null ? (_ref = node.constructor) != null ? _ref.name : void 0 : void 0) === goalName || toStringMatch(node, goalName);
+  };
+
+  checkProtoChainFor = function(node, goalName) {
+    var pType, _ref;
+    if (typeof node !== 'object' || !node) {
+      return false;
+    }
+    pType = Object.getPrototypeOf(node);
+    while (pType !== Object.getPrototypeOf({})) {
+      if ((pType != null ? (_ref = pType.constructor) != null ? _ref.name : void 0 : void 0) === goalName || toStringMatch(pType, "" + goalName + "Prototype")) {
+        return true;
+      }
+      pType = Object.getPrototypeOf(pType);
+    }
+    return false;
+  };
+
+  toStringMatch = function(object, name) {
+    return !!toString.call(object).match(new RegExp("^\\[object " + name + "\\]$"));
+  };
+
+  if (typeof exports === 'object') {
+    module.exports = allen;
+  } else if (typeof define === 'function' && define.amd) {
+    define('allen', function() {
+      return allen;
+    });
+  } else {
+    root.allen = allen;
+  }
+
+}).call(this);
+
+});
+require.alias("web-audio-components-rack/index.js", "component.fm/deps/rack/index.js");
+require.alias("web-audio-components-rack/template.js", "component.fm/deps/rack/template.js");
+require.alias("matthewmueller-hogan/hogan.js", "web-audio-components-rack/deps/hogan/hogan.js");
+require.alias("matthewmueller-hogan/index.js", "web-audio-components-rack/deps/hogan/index.js");
+
+require.alias("component-domify/index.js", "web-audio-components-rack/deps/domify/index.js");
+
+require.alias("component-dom/index.js", "web-audio-components-rack/deps/dom/index.js");
+require.alias("component-type/index.js", "component-dom/deps/type/index.js");
+
+require.alias("component-event/index.js", "component-dom/deps/event/index.js");
+
+require.alias("component-delegate/index.js", "component-dom/deps/delegate/index.js");
+require.alias("component-matches-selector/index.js", "component-delegate/deps/matches-selector/index.js");
+require.alias("component-query/index.js", "component-matches-selector/deps/query/index.js");
+
+require.alias("component-event/index.js", "component-delegate/deps/event/index.js");
+
+require.alias("component-indexof/index.js", "component-dom/deps/indexof/index.js");
+
+require.alias("component-domify/index.js", "component-dom/deps/domify/index.js");
+
+require.alias("component-classes/index.js", "component-dom/deps/classes/index.js");
+require.alias("component-indexof/index.js", "component-classes/deps/indexof/index.js");
+
+require.alias("component-css/index.js", "component-dom/deps/css/index.js");
+
+require.alias("component-sort/index.js", "component-dom/deps/sort/index.js");
+
+require.alias("component-value/index.js", "component-dom/deps/value/index.js");
+require.alias("component-value/index.js", "component-dom/deps/value/index.js");
+require.alias("component-value/index.js", "component-value/index.js");
+
+require.alias("component-query/index.js", "component-dom/deps/query/index.js");
+
+require.alias("manuelstofer-each/index.js", "web-audio-components-rack/deps/each/index.js");
+
+require.alias("jsantell-dial/index.js", "web-audio-components-rack/deps/dial/index.js");
+require.alias("jsantell-dial/template.js", "web-audio-components-rack/deps/dial/template.js");
+require.alias("component-domify/index.js", "jsantell-dial/deps/domify/index.js");
+
+require.alias("component-event/index.js", "jsantell-dial/deps/event/index.js");
+
+require.alias("component-emitter/index.js", "jsantell-dial/deps/emitter/index.js");
+require.alias("component-indexof/index.js", "component-emitter/deps/indexof/index.js");
+
+require.alias("gorillatron-extend/index.js", "jsantell-dial/deps/extend/index.js");
+
+require.alias("jsantell-rotate/index.js", "jsantell-dial/deps/rotate/index.js");
+
+require.alias("jsantell-button/index.js", "web-audio-components-rack/deps/button/index.js");
+require.alias("jsantell-button/template.js", "web-audio-components-rack/deps/button/template.js");
+require.alias("component-domify/index.js", "jsantell-button/deps/domify/index.js");
+
+require.alias("component-event/index.js", "jsantell-button/deps/event/index.js");
+
+require.alias("component-emitter/index.js", "jsantell-button/deps/emitter/index.js");
+require.alias("component-indexof/index.js", "component-emitter/deps/indexof/index.js");
+
+require.alias("component-classes/index.js", "jsantell-button/deps/classes/index.js");
+require.alias("component-indexof/index.js", "component-classes/deps/indexof/index.js");
+
+require.alias("jsantell-allen/index.js", "component.fm/deps/allen/index.js");
+require.alias("jsantell-allen/allen.js", "component.fm/deps/allen/allen.js");
+require.alias("jsantell-allen/index.js", "component.fm/deps/allen/index.js");
+require.alias("jsantell-allen/index.js", "jsantell-allen/index.js");
+
+
 ;(function(e,t,n){function i(n,s){if(!t[n]){if(!e[n]){var o=typeof require=="function"&&require;if(!s&&o)return o(n,!0);if(r)return r(n,!0);throw new Error("Cannot find module '"+n+"'")}var u=t[n]={exports:{}};e[n][0](function(t){var r=e[n][1][t];return i(r?r:t)},u,u.exports)}return t[n].exports}var r=typeof require=="function"&&require;for(var s=0;s<n.length;s++)i(n[s]);return i})({1:[function(require,module,exports){
 var Router = require('./router');
+var config = require('./config');
+
 module.exports = (function () {
   var app = {};
   app.router = new Router();
-//  Backbone.history.start({ pushState: true });
-  Backbone.history.start({ root: '/component.fm/public' });
+  Backbone.history.start({ root: config.root });
+
   return app;
 })();
 
-},{"./router":2}],2:[function(require,module,exports){
+},{"./router":2,"./config":3}],3:[function(require,module,exports){
+var config = {
+
+}
+
+var development = {
+  // TODO set up mocks for this
+  apiURL: 'http://api.component.fm/',
+  root: '/component.fm/public'
+}
+
+var production = {
+  apiURL: 'http://api.component.fm/',
+  root: '/'
+}
+
+module.exports = _.extend(config, ENV === 'development' ? development : production);
+
+},{}],2:[function(require,module,exports){
 var when = require('./lib/when');
 var Components = require('./collections/components');
 var ListView = require('./views/list');
@@ -13866,7 +17270,7 @@ module.exports = Backbone.Router.extend({
 
   routes: {
     '': 'home',
-    'component/:owner/:module': 'component'
+    'components/:owner/:module': 'component'
   },
 
   initialize: function () {
@@ -13910,14 +17314,15 @@ module.exports = Backbone.Router.extend({
     this.initialized.then(function () {
       var component = router.components.where({ repo: owner + '/' + module })[0];
       var view = new ComponentView({
-        component: component
+        component: component,
+        components: router.components
       });
       router.setView(view);
     });
   }
 });
 
-},{"./lib/when":3,"./collections/components":4,"./views/list":5,"./views/component":6}],7:[function(require,module,exports){
+},{"./lib/when":4,"./collections/components":5,"./views/list":6,"./views/component":7}],8:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -13971,7 +17376,7 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 (function(process){/** @license MIT License (c) copyright 2011-2013 original author or authors */
 
 /**
@@ -14796,7 +18201,7 @@ define(function () {
 );
 
 })(require("__browserify_process"))
-},{"__browserify_process":7}],4:[function(require,module,exports){
+},{"__browserify_process":8}],5:[function(require,module,exports){
 var config = require('../config');
 
 module.exports = Backbone.Collection.extend({
@@ -14806,7 +18211,7 @@ module.exports = Backbone.Collection.extend({
   }
 });
 
-},{"../config":8,"../models/component":9}],5:[function(require,module,exports){
+},{"../config":3,"../models/component":9}],6:[function(require,module,exports){
 var View = require('./view');
 
 module.exports = View.extend({
@@ -14823,40 +18228,41 @@ module.exports = View.extend({
 
 });
 
-},{"./view":10}],6:[function(require,module,exports){
+},{"./view":10}],7:[function(require,module,exports){
 var View = require('./view');
+var config = require('../config');
 
 module.exports = View.extend({
   name: 'component',
   template: templates.component,
 
+  events: {
+    'click .activate-player': 'activatePlayer'
+  },
+
   initialize: function (options) {
     this.component = options.component;
+    this.components = options.components;
   },
 
   getRenderData: function () {
-                   console.log(this.component.toJSON());
-    return this.component.toJSON();
+    var data = this.component.toJSON();
+    data.keywords = data.keywords.join(' ');
+    data.dependencies = data.dependencies.map(formatDep.bind(this));
+    data.dependents = data.dependents.map(formatDep.bind(this));
+    return data;
   }
 });
 
-},{"./view":10}],8:[function(require,module,exports){
-var config = {
-
+function formatDep (dep) {
+  console.log('format', dep, this.components.where({repo:dep}));
+  return {
+    name: dep,
+    isAudio: !!this.components.where({ repo: dep }).length
+  };
 }
 
-var development = {
-  // TODO set up mocks for this
-  apiURL: 'http://api.component.fm/'
-}
-
-var production = {
-  apiURL: 'http://api.component.fm/'
-}
-
-module.exports = _.extend(config, ENV === 'development' ? development : production);
-
-},{}],10:[function(require,module,exports){
+},{"./view":10,"../config":3}],10:[function(require,module,exports){
 module.exports = Backbone.View.extend({
   render: function () {
     this.beforeRender();
@@ -14873,6 +18279,7 @@ module.exports = Backbone.View.extend({
 
 },{}],9:[function(require,module,exports){
 var config = require('../config');
+var when = require('../lib/when');
 
 module.exports = Backbone.Model.extend({
   initialize: function () {},
@@ -14901,16 +18308,18 @@ module.exports = Backbone.Model.extend({
     return valid;
   },
 
-  injectBuild : function (callback) {
+  injectBuild : function () {
     var
+      deferred = when.defer(),
       url = config.apiURL + 'components/' + this.get('repo') + '/build.js',
-      scriptEl = document.createElement('script');
-    scriptEl.src = url;
-    scriptEl.type = 'text/javascript';
-    scriptEl.onload = callback;
-    document.getElementsByTagName('head')[0].appendChild(scriptEl);
+      el = document.createElement('script');
+    el.src = url;
+    el.type = 'text/javascript';
+    el.onload = deferred.resolve;
+    document.getElementsByTagName('head')[0].appendChild(el);
+    return deferred.promise;
   }
 });
 
-},{"../config":8}]},{},[1])
+},{"../config":3,"../lib/when":4}]},{},[1])
 ;

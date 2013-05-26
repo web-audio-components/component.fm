@@ -1,8 +1,10 @@
 var Router = require('./router');
+var config = require('./config');
+
 module.exports = (function () {
   var app = {};
   app.router = new Router();
-//  Backbone.history.start({ pushState: true });
-  Backbone.history.start({ root: '/component.fm/public' });
+  Backbone.history.start({ root: config.root });
+
   return app;
 })();

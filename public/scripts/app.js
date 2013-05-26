@@ -1,14 +1,34 @@
 ;(function(e,t,n){function i(n,s){if(!t[n]){if(!e[n]){var o=typeof require=="function"&&require;if(!s&&o)return o(n,!0);if(r)return r(n,!0);throw new Error("Cannot find module '"+n+"'")}var u=t[n]={exports:{}};e[n][0](function(t){var r=e[n][1][t];return i(r?r:t)},u,u.exports)}return t[n].exports}var r=typeof require=="function"&&require;for(var s=0;s<n.length;s++)i(n[s]);return i})({1:[function(require,module,exports){
 var Router = require('./router');
+var config = require('./config');
+
 module.exports = (function () {
   var app = {};
   app.router = new Router();
-//  Backbone.history.start({ pushState: true });
-  Backbone.history.start({ root: '/component.fm/public' });
+  Backbone.history.start({ root: config.root });
+
   return app;
 })();
 
-},{"./router":2}],2:[function(require,module,exports){
+},{"./router":2,"./config":3}],3:[function(require,module,exports){
+var config = {
+
+}
+
+var development = {
+  // TODO set up mocks for this
+  apiURL: 'http://api.component.fm/',
+  root: '/component.fm/public'
+}
+
+var production = {
+  apiURL: 'http://api.component.fm/',
+  root: '/'
+}
+
+module.exports = _.extend(config, ENV === 'development' ? development : production);
+
+},{}],2:[function(require,module,exports){
 var when = require('./lib/when');
 var Components = require('./collections/components');
 var ListView = require('./views/list');
@@ -18,7 +38,7 @@ module.exports = Backbone.Router.extend({
 
   routes: {
     '': 'home',
-    'component/:owner/:module': 'component'
+    'components/:owner/:module': 'component'
   },
 
   initialize: function () {
@@ -62,14 +82,15 @@ module.exports = Backbone.Router.extend({
     this.initialized.then(function () {
       var component = router.components.where({ repo: owner + '/' + module })[0];
       var view = new ComponentView({
-        component: component
+        component: component,
+        components: router.components
       });
       router.setView(view);
     });
   }
 });
 
-},{"./lib/when":3,"./collections/components":4,"./views/list":5,"./views/component":6}],7:[function(require,module,exports){
+},{"./lib/when":4,"./collections/components":5,"./views/list":6,"./views/component":7}],8:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -123,7 +144,7 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 (function(process){/** @license MIT License (c) copyright 2011-2013 original author or authors */
 
 /**
@@ -948,7 +969,7 @@ define(function () {
 );
 
 })(require("__browserify_process"))
-},{"__browserify_process":7}],4:[function(require,module,exports){
+},{"__browserify_process":8}],5:[function(require,module,exports){
 var config = require('../config');
 
 module.exports = Backbone.Collection.extend({
@@ -958,7 +979,7 @@ module.exports = Backbone.Collection.extend({
   }
 });
 
-},{"../config":8,"../models/component":9}],5:[function(require,module,exports){
+},{"../config":3,"../models/component":9}],6:[function(require,module,exports){
 var View = require('./view');
 
 module.exports = View.extend({
@@ -975,40 +996,41 @@ module.exports = View.extend({
 
 });
 
-},{"./view":10}],6:[function(require,module,exports){
+},{"./view":10}],7:[function(require,module,exports){
 var View = require('./view');
+var config = require('../config');
 
 module.exports = View.extend({
   name: 'component',
   template: templates.component,
 
+  events: {
+    'click .activate-player': 'activatePlayer'
+  },
+
   initialize: function (options) {
     this.component = options.component;
+    this.components = options.components;
   },
 
   getRenderData: function () {
-                   console.log(this.component.toJSON());
-    return this.component.toJSON();
+    var data = this.component.toJSON();
+    data.keywords = data.keywords.join(' ');
+    data.dependencies = data.dependencies.map(formatDep.bind(this));
+    data.dependents = data.dependents.map(formatDep.bind(this));
+    return data;
   }
 });
 
-},{"./view":10}],8:[function(require,module,exports){
-var config = {
-
+function formatDep (dep) {
+  console.log('format', dep, this.components.where({repo:dep}));
+  return {
+    name: dep,
+    isAudio: !!this.components.where({ repo: dep }).length
+  };
 }
 
-var development = {
-  // TODO set up mocks for this
-  apiURL: 'http://api.component.fm/'
-}
-
-var production = {
-  apiURL: 'http://api.component.fm/'
-}
-
-module.exports = _.extend(config, ENV === 'development' ? development : production);
-
-},{}],10:[function(require,module,exports){
+},{"./view":10,"../config":3}],10:[function(require,module,exports){
 module.exports = Backbone.View.extend({
   render: function () {
     this.beforeRender();
@@ -1025,6 +1047,7 @@ module.exports = Backbone.View.extend({
 
 },{}],9:[function(require,module,exports){
 var config = require('../config');
+var when = require('../lib/when');
 
 module.exports = Backbone.Model.extend({
   initialize: function () {},
@@ -1053,16 +1076,18 @@ module.exports = Backbone.Model.extend({
     return valid;
   },
 
-  injectBuild : function (callback) {
+  injectBuild : function () {
     var
+      deferred = when.defer(),
       url = config.apiURL + 'components/' + this.get('repo') + '/build.js',
-      scriptEl = document.createElement('script');
-    scriptEl.src = url;
-    scriptEl.type = 'text/javascript';
-    scriptEl.onload = callback;
-    document.getElementsByTagName('head')[0].appendChild(scriptEl);
+      el = document.createElement('script');
+    el.src = url;
+    el.type = 'text/javascript';
+    el.onload = deferred.resolve;
+    document.getElementsByTagName('head')[0].appendChild(el);
+    return deferred.promise;
   }
 });
 
-},{"../config":8}]},{},[1])
+},{"../config":3,"../lib/when":4}]},{},[1])
 ;

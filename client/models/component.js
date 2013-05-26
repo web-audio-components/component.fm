@@ -1,4 +1,5 @@
 var config = require('../config');
+var when = require('../lib/when');
 
 module.exports = Backbone.Model.extend({
   initialize: function () {},
@@ -27,13 +28,15 @@ module.exports = Backbone.Model.extend({
     return valid;
   },
 
-  injectBuild : function (callback) {
+  injectBuild : function () {
     var
+      deferred = when.defer(),
       url = config.apiURL + 'components/' + this.get('repo') + '/build.js',
-      scriptEl = document.createElement('script');
-    scriptEl.src = url;
-    scriptEl.type = 'text/javascript';
-    scriptEl.onload = callback;
-    document.getElementsByTagName('head')[0].appendChild(scriptEl);
+      el = document.createElement('script');
+    el.src = url;
+    el.type = 'text/javascript';
+    el.onload = deferred.resolve;
+    document.getElementsByTagName('head')[0].appendChild(el);
+    return deferred.promise;
   }
 });

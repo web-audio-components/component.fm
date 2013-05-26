@@ -1,0 +1,13 @@
+{
+  "name": "component.fm",
+  "repo": "test/test",
+  "description": "test",
+  "version": "0.0.1",
+  "keywords": [],
+  "dependencies": {
+    "web-audio-components/rack": "*",
+    "jsantell/allen": "*"
+  },
+  "development": {},
+  "license": "MIT"
+}

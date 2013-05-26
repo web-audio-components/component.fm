@@ -39,6 +39,7 @@ module.exports = function(grunt) {
           './vendor/scripts/backbone-1.0.0.js',
           './vendor/scripts/handlebars-1.0.0-rc.3.js',
           './public/scripts/templates.js',
+          './client/build/build.js',
           './public/scripts/app.js'
         ],
         dest: './public/scripts/site.js'

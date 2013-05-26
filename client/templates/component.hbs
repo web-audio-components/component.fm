@@ -14,6 +14,10 @@
         <td><a href="https://github.com/{{repo}}" title="GitHub repository for {{name}}">{{repo}}</a></td>
       </tr>
       <tr>
+        <td class="attribute-label">version</td>
+        <td>{{version}}</td>
+      </tr>
+      <tr>
         <td class="attribute-label">keywords</td>
         <td>{{keywords}}</td>
       </tr>
@@ -22,8 +26,36 @@
         <td>{{updated}}</td>
       </tr>
       <tr>
+        <td class="attribute-label">dependencies</td>
+        <td>
+          {{#each dependencies}}
+            <a href="
+              {{#if isAudio}}
+                #components/{{name}}
+              {{else}}
+                http://github.com/{{name}}
+              {{/if}}
+            " title="{{name}}">{{name}}</a>
+          {{/each}}
+        </td>
+      </tr>
+      <tr>
+        <td class="attribute-label">dependents</td>
+        <td>
+          {{#each dependents}}
+            <a href="
+              {{#if isAudio}}
+                #components/{{name}}
+              {{else}}
+                http://github.com/{{name}}
+              {{/if}}
+            " title="{{name}}">{{name}}</a>
+          {{/each}}
+        </td>
+      </tr>
+      <tr>
         <td class="attribute-label">watchers</td>
-        <td>{{watchers}} stars</td>
+        <td>{{stars}} stars</td>
       </tr>
     </tbody>
   </table>

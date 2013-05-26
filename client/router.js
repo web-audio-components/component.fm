@@ -7,7 +7,7 @@ module.exports = Backbone.Router.extend({
 
   routes: {
     '': 'home',
-    'component/:owner/:module': 'component'
+    'components/:owner/:module': 'component'
   },
 
   initialize: function () {
@@ -51,7 +51,8 @@ module.exports = Backbone.Router.extend({
     this.initialized.then(function () {
       var component = router.components.where({ repo: owner + '/' + module })[0];
       var view = new ComponentView({
-        component: component
+        component: component,
+        components: router.components
       });
       router.setView(view);
     });

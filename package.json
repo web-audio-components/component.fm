@@ -1,9 +1,10 @@
 {
   "name": "component.fm",
-  "version": "0.0.1",
+  "version": "0.1.0-10",
   "private": true,
+  "main": "app.js",
   "scripts": {
-    "start": "node app"
+    "start": "node app.js"
   },
   "dependencies": {
     "express": "3.0.0rc3",
@@ -20,5 +21,12 @@
     "grunt-contrib-uglify": "~0.2.0",
     "grunt-contrib-jade": "~0.5.0",
     "grunt-contrib-handlebars": "~0.5.0"
+  },
+  "domains": [
+    "component.fm"
+  ],
+  "subdomain": "component-fm",
+  "engines": {
+    "node": "0.8.x"
   }
 }

@@ -1,4 +1,5 @@
 var View = require('./view');
+var PlayerView = require('./player');
 var config = require('../config');
 
 module.exports = View.extend({
@@ -6,7 +7,7 @@ module.exports = View.extend({
   template: templates.component,
 
   events: {
-    'click .activate-player': 'activatePlayer'
+    'click .activate-player a': 'activatePlayer'
   },
 
   initialize: function (options) {
@@ -20,7 +21,17 @@ module.exports = View.extend({
     data.dependencies = data.dependencies.map(formatDep.bind(this));
     data.dependents = data.dependents.map(formatDep.bind(this));
     return data;
+  },
+
+  activatePlayer: function (e) {
+    e.preventDefault();
+    this.player = new PlayerView({ model: this.component });
+    this.$('.activate-player')
+      .removeClass('activate-player')
+      .addClass('player')
+      .html(this.player.render().el);
   }
+
 });
 
 function formatDep (dep) {

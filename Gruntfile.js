@@ -18,9 +18,21 @@ module.exports = function(grunt) {
         files: {
           'public/styles/site.min.css': [
             'vendor/styles/bootstrap/bootstrap.css',
+            'client/build/build.css',
             'public/styles/site.css'
           ]
         }
+      }
+    },
+
+    copy: {
+      main: {
+        files: [{
+          expand: false,
+          flatten: true,
+          src: 'client/build/web-audio-components-rack/*',
+          dest: 'public/styles/web-audio-components-rack/'
+        }]
       }
     },
 
@@ -98,6 +110,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-stylus');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-browserify2');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
@@ -106,5 +119,5 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-handlebars');
 
   grunt.registerTask('browserify', ['browserify2:compile']);
-  grunt.registerTask('default', 'jade stylus browserify handlebars concat cssmin uglify'.split(' '));
+  grunt.registerTask('default', 'jade stylus browserify handlebars concat cssmin uglify copy'.split(' '));
 };

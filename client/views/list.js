@@ -23,9 +23,15 @@ module.exports = View.extend({
     }.bind(this));
   },
 
+  setQuery: function (query) {
+    this.$('.search').val(query);
+    this.filter(query);
+  },
+
+  // Allows route to handle the actual filtering
   handleQuery: function (e) {
     var query = $(e.target).val();
-    this.filter(query);
+    window.location.hash = 'search/' + query;
   }
 
 });

@@ -7,6 +7,7 @@ module.exports = Backbone.Router.extend({
 
   routes: {
     '': 'home',
+    'search/:query': 'query',
     'components/:owner/:module': 'component'
   },
 
@@ -40,6 +41,17 @@ module.exports = Backbone.Router.extend({
     this.setView(new ListView({
       components: this.components
     }));
+  },
+
+  query: function (query) {
+    if (this.view && this.view.name === 'list')
+      this.view.setQuery(query);
+    else {
+      this.home();
+      this.initialized.then(function () {
+        this.view.setQuery(query);
+      }.bind(this));
+    }
   },
 
   component: function (owner, module) {

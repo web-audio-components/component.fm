@@ -12,7 +12,10 @@ html.no-js(lang='en')
     title= 'component.fm'
     meta(charset='utf-8')
     meta(description='')
-    link(rel='stylesheet', href='styles/site.min.css')
+    - if (env === 'development')
+      link(rel='stylesheet', href='styles/site.css')
+    - else
+      link(rel='stylesheet', href='styles/site.min.css')
   body
     .navbar.navbar-fixed-top
       .navbar-inner.header

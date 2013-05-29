@@ -8,7 +8,7 @@ module.exports = function(grunt) {
           'include css': true
         },
         files: {
-          'public/styles/site.css': 'client/styles/*.styl'
+          'public/styles/app.css': 'client/styles/*.styl'
         }
       }
     },
@@ -17,8 +17,6 @@ module.exports = function(grunt) {
       combine: {
         files: {
           'public/styles/site.min.css': [
-            'vendor/styles/bootstrap/bootstrap.css',
-            'client/build/build.css',
             'public/styles/site.css'
           ]
         }
@@ -55,6 +53,14 @@ module.exports = function(grunt) {
           './public/scripts/app.js'
         ],
         dest: './public/scripts/site.js'
+      },
+      css: {
+        src: [
+          'vendor/styles/bootstrap/bootstrap.css',
+          'client/build/build.css',
+          'public/styles/app.css'
+        ],
+        dest: './public/styles/site.css'
       }
     },
 

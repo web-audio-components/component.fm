@@ -1,6 +1,7 @@
 var View = require('./view');
 var PlayerView = require('./player');
 var config = require('../config');
+var vagueDate = require('../lib/vagueDate');
 
 module.exports = View.extend({
   name: 'component',
@@ -20,6 +21,7 @@ module.exports = View.extend({
     data.keywords = data.keywords.join(' ');
     data.dependencies = data.dependencies.map(formatDep.bind(this));
     data.dependents = data.dependents.map(formatDep.bind(this));
+    data.updated = vagueDate.get({ to: new Date(data.updated) });
     return data;
   },
 

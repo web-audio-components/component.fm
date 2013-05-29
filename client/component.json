@@ -6,7 +6,8 @@
   "keywords": [],
   "dependencies": {
     "web-audio-components/rack": "*",
-    "jsantell/allen": "*"
+    "jsantell/allen": "*",
+    "philbooth/vagueDate.js": "*"
   },
   "development": {},
   "license": "MIT"

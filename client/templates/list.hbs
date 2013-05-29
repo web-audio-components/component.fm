@@ -1,6 +1,7 @@
+<input class="search" type="text" placeholder="search..." />
 <table class="table components">
   {{#each components}}
-    <tr>
+    <tr data-component="{{repo}}">
       <td class="name">
         <h4>
           <a href="#components/{{repo}}">{{name}}</a>

@@ -31,19 +31,15 @@ module.exports = Backbone.Router.extend({
   setView: function (view) {
     this.clearView();
     this.initialized.then(function () {
-      console.log(view);
       $('#main').html(view.render().el);
     });
     this.view = view;
   },
 
   home: function () {
-    if (!this.listView) {
-      this.listView = new ListView({
-        components: this.components
-      });
-    }
-    this.setView(this.listView);
+    this.setView(new ListView({
+      components: this.components
+    }));
   },
 
   component: function (owner, module) {

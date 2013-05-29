@@ -7,6 +7,12 @@
         <td class="attribute-label">author</td>
         <td>
           {{author}}
+          {{#if twitter}}
+            <a href="http://twitter.com/{{twitter}}" title="{{twitter}}" on Twitter"><i class="icon-twitter"></i> @{{twitter}}</a>
+          {{/if}}
+          {{#if github}}
+            <a href="https://github.com/{{github}}" title="{{github}}" on GitHub"><i class="icon-github"></i> @{{github}}</a>
+          {{/if}}
         </td>
       </tr>
       <tr>

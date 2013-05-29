@@ -18,7 +18,9 @@ module.exports = View.extend({
 
   getRenderData: function () {
     var data = this.component.toJSON();
-    data.keywords = data.keywords.join(' ');
+    data.keywords = data.keywords.join(', ');
+    data.twitter = (data.twitter || '').replace('@', '');
+    data.github = (data.github || '').replace('@', '');
     data.dependencies = data.dependencies.map(formatDep.bind(this));
     data.dependents = data.dependents.map(formatDep.bind(this));
     data.updated = vagueDate.get({ to: new Date(data.updated) });
@@ -37,6 +39,7 @@ module.exports = View.extend({
 });
 
 function formatDep (dep) {
+  dep = dep.name || dep;
   console.log('format', dep, this.components.where({repo:dep}));
   return {
     name: dep,

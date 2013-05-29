@@ -2,13 +2,16 @@ var when = require('./lib/when');
 var Components = require('./collections/components');
 var ListView = require('./views/list');
 var ComponentView = require('./views/component');
+var ContentView = require('./views/content');
 
 module.exports = Backbone.Router.extend({
 
   routes: {
     '': 'home',
     'search/:query': 'query',
-    'components/:owner/:module': 'component'
+    'components/:owner/:module': 'component',
+    'about': 'about',
+    'creating': 'creating'
   },
 
   initialize: function () {
@@ -68,5 +71,17 @@ module.exports = Backbone.Router.extend({
       });
       router.setView(view);
     });
+  },
+
+  about: function () {
+    this.setView(new ContentView ({
+      template: 'about'
+    }));
+  },
+
+  creating: function () {
+    this.setView(new ContentView ({
+      template: 'creating'
+    }));
   }
 });

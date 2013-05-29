@@ -21,6 +21,10 @@ module.exports = Backbone.Router.extend({
       success: deferred.resolve,
       error: deferred.reject
     });
+
+    this.initialized.then(null, function (err) {
+      console.error('Could not fetch components');
+    });
   },
 
   clearView: function () {

@@ -33,12 +33,16 @@ var when = require('./lib/when');
 var Components = require('./collections/components');
 var ListView = require('./views/list');
 var ComponentView = require('./views/component');
+var ContentView = require('./views/content');
 
 module.exports = Backbone.Router.extend({
 
   routes: {
     '': 'home',
-    'components/:owner/:module': 'component'
+    'search/:query': 'query',
+    'components/:owner/:module': 'component',
+    'about': 'about',
+    'creating': 'creating'
   },
 
   initialize: function () {
@@ -51,6 +55,10 @@ module.exports = Backbone.Router.extend({
       success: deferred.resolve,
       error: deferred.reject
     });
+
+    this.initialized.then(null, function (err) {
+      console.error('Could not fetch components');
+    });
   },
 
   clearView: function () {
@@ -62,19 +70,26 @@ module.exports = Backbone.Router.extend({
   setView: function (view) {
     this.clearView();
     this.initialized.then(function () {
-      console.log(view);
       $('#main').html(view.render().el);
     });
     this.view = view;
   },
 
   home: function () {
-    if (!this.listView) {
-      this.listView = new ListView({
-        components: this.components
-      });
+    this.setView(new ListView({
+      components: this.components
+    }));
+  },
+
+  query: function (query) {
+    if (this.view && this.view.name === 'list')
+      this.view.setQuery(query);
+    else {
+      this.home();
+      this.initialized.then(function () {
+        this.view.setQuery(query);
+      }.bind(this));
     }
-    this.setView(this.listView);
   },
 
   component: function (owner, module) {
@@ -87,10 +102,22 @@ module.exports = Backbone.Router.extend({
       });
       router.setView(view);
     });
+  },
+
+  about: function () {
+    this.setView(new ContentView ({
+      template: 'about'
+    }));
+  },
+
+  creating: function () {
+    this.setView(new ContentView ({
+      template: 'creating'
+    }));
   }
 });
 
-},{"./lib/when":4,"./collections/components":5,"./views/list":6,"./views/component":7}],8:[function(require,module,exports){
+},{"./lib/when":4,"./collections/components":5,"./views/list":6,"./views/component":7,"./views/content":8}],9:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -969,7 +996,7 @@ define(function () {
 );
 
 })(require("__browserify_process"))
-},{"__browserify_process":8}],5:[function(require,module,exports){
+},{"__browserify_process":9}],5:[function(require,module,exports){
 var config = require('../config');
 
 module.exports = Backbone.Collection.extend({
@@ -979,12 +1006,15 @@ module.exports = Backbone.Collection.extend({
   }
 });
 
-},{"../config":3,"../models/component":9}],6:[function(require,module,exports){
+},{"../config":3,"../models/component":10}],6:[function(require,module,exports){
 var View = require('./view');
 
 module.exports = View.extend({
   name: 'list',
   template: templates.list,
+  events: {
+    'keyup .search': 'handleQuery'
+  },
 
   initialize: function (options) {
     this.components = options.components;
@@ -992,14 +1022,34 @@ module.exports = View.extend({
 
   getRenderData: function () {
     return { components: this.components.toJSON() };
+  },
+
+  filter: function (query) {
+    this.components.each(function (component) {
+      this.$('tr[data-component="' + component.get('repo') + '"]')[
+        component.matches(query) ? 'show' : 'hide'
+      ]();
+    }.bind(this));
+  },
+
+  setQuery: function (query) {
+    this.$('.search').val(query);
+    this.filter(query);
+  },
+
+  // Allows route to handle the actual filtering
+  handleQuery: function (e) {
+    var query = $(e.target).val();
+    window.location.hash = 'search/' + query;
   }
 
 });
 
-},{"./view":10}],7:[function(require,module,exports){
+},{"./view":11}],7:[function(require,module,exports){
 var View = require('./view');
 var PlayerView = require('./player');
 var config = require('../config');
+var vagueDate = require('../lib/vagueDate');
 
 module.exports = View.extend({
   name: 'component',
@@ -1016,9 +1066,12 @@ module.exports = View.extend({
 
   getRenderData: function () {
     var data = this.component.toJSON();
-    data.keywords = data.keywords.join(' ');
+    data.keywords = data.keywords.join(', ');
+    data.twitter = (data.twitter || '').replace('@', '');
+    data.github = (data.github || '').replace('@', '');
     data.dependencies = data.dependencies.map(formatDep.bind(this));
     data.dependents = data.dependents.map(formatDep.bind(this));
+    data.updated = vagueDate.get({ to: new Date(data.updated) });
     return data;
   },
 
@@ -1034,6 +1087,7 @@ module.exports = View.extend({
 });
 
 function formatDep (dep) {
+  dep = dep.name || dep;
   console.log('format', dep, this.components.where({repo:dep}));
   return {
     name: dep,
@@ -1041,7 +1095,18 @@ function formatDep (dep) {
   };
 }
 
-},{"./view":10,"./player":11,"../config":3}],10:[function(require,module,exports){
+},{"./view":11,"./player":12,"../config":3,"../lib/vagueDate":13}],8:[function(require,module,exports){
+var View = require('./view');
+
+module.exports = View.extend({
+  name: 'content',
+
+  initialize: function (options) {
+    this.template = templates[options.template];
+  }
+});
+
+},{"./view":11}],11:[function(require,module,exports){
 module.exports = Backbone.View.extend({
   render: function () {
     this.beforeRender();
@@ -1056,7 +1121,10 @@ module.exports = Backbone.View.extend({
   beforeRender: function () {}
 });
 
-},{}],9:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
+module.exports = window.require('philbooth-vagueDate.js');
+
+},{}],10:[function(require,module,exports){
 var config = require('../config');
 var when = require('../lib/when');
 
@@ -1100,7 +1168,7 @@ module.exports = Backbone.Model.extend({
   }
 });
 
-},{"../config":3,"../lib/when":4}],11:[function(require,module,exports){
+},{"../config":3,"../lib/when":4}],12:[function(require,module,exports){
 var View = require('./view');
 var allen = require('../lib/allen');
 var Rack = require('../lib/rack');
@@ -1222,10 +1290,10 @@ module.exports = View.extend({
 
 });
 
-},{"./view":10,"../lib/allen":12,"../lib/rack":13,"../lib/when":4}],12:[function(require,module,exports){
+},{"./view":11,"../lib/allen":14,"../lib/rack":15,"../lib/when":4}],14:[function(require,module,exports){
 module.exports = window.require('jsantell-allen');
 
-},{}],13:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 module.exports = window.require('web-audio-components-rack');
 
 },{}]},{},[1])

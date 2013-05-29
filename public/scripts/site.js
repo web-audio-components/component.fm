@@ -13758,6 +13758,15 @@ Handlebars.template = Handlebars.VM.template;
 
 this["templates"] = this["templates"] || {};
 
+this["templates"]["about"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [2,'>= 1.0.0-rc.3'];
+helpers = helpers || Handlebars.helpers; data = data || {};
+  
+
+
+  return "<h1>About Web Audio Components</h1>\n";
+  });
+
 this["templates"]["component"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
   this.compilerInfo = [2,'>= 1.0.0-rc.3'];
 helpers = helpers || Handlebars.helpers; data = data || {};
@@ -13766,8 +13775,46 @@ helpers = helpers || Handlebars.helpers; data = data || {};
 function program1(depth0,data) {
   
   var buffer = "", stack1;
+  buffer += "\n            <a href=\"http://twitter.com/";
+  if (stack1 = helpers.twitter) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.twitter; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "\" title=\"";
+  if (stack1 = helpers.twitter) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.twitter; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "\" on Twitter\"><i class=\"icon-twitter\"></i> @";
+  if (stack1 = helpers.twitter) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.twitter; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</a>\n          ";
+  return buffer;
+  }
+
+function program3(depth0,data) {
+  
+  var buffer = "", stack1;
+  buffer += "\n            <a href=\"https://github.com/";
+  if (stack1 = helpers.github) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.github; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "\" title=\"";
+  if (stack1 = helpers.github) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.github; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "\" on GitHub\"><i class=\"icon-github\"></i> @";
+  if (stack1 = helpers.github) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.github; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "</a>\n          ";
+  return buffer;
+  }
+
+function program5(depth0,data) {
+  
+  var buffer = "", stack1;
   buffer += "\n            <a href=\"\n              ";
-  stack1 = helpers['if'].call(depth0, depth0.isAudio, {hash:{},inverse:self.program(4, program4, data),fn:self.program(2, program2, data),data:data});
+  stack1 = helpers['if'].call(depth0, depth0.isAudio, {hash:{},inverse:self.program(8, program8, data),fn:self.program(6, program6, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n            \" title=\"";
   if (stack1 = helpers.name) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
@@ -13780,7 +13827,7 @@ function program1(depth0,data) {
     + "</a>\n          ";
   return buffer;
   }
-function program2(depth0,data) {
+function program6(depth0,data) {
   
   var buffer = "", stack1;
   buffer += "\n                #components/";
@@ -13791,7 +13838,7 @@ function program2(depth0,data) {
   return buffer;
   }
 
-function program4(depth0,data) {
+function program8(depth0,data) {
   
   var buffer = "", stack1;
   buffer += "\n                http://github.com/";
@@ -13814,7 +13861,13 @@ function program4(depth0,data) {
   if (stack1 = helpers.author) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.author; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + "\n        </td>\n      </tr>\n      <tr>\n        <td class=\"attribute-label\">repo</td>\n        <td><a href=\"https://github.com/";
+    + "\n          ";
+  stack1 = helpers['if'].call(depth0, depth0.twitter, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n          ";
+  stack1 = helpers['if'].call(depth0, depth0.github, {hash:{},inverse:self.noop,fn:self.program(3, program3, data),data:data});
+  if(stack1 || stack1 === 0) { buffer += stack1; }
+  buffer += "\n        </td>\n      </tr>\n      <tr>\n        <td class=\"attribute-label\">repo</td>\n        <td><a href=\"https://github.com/";
   if (stack1 = helpers.repo) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.repo; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
@@ -13839,17 +13892,26 @@ function program4(depth0,data) {
   else { stack1 = depth0.updated; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
     + "</td>\n      </tr>\n      <tr>\n        <td class=\"attribute-label\">dependencies</td>\n        <td>\n          ";
-  stack1 = helpers.each.call(depth0, depth0.dependencies, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  stack1 = helpers.each.call(depth0, depth0.dependencies, {hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n        </td>\n      </tr>\n      <tr>\n        <td class=\"attribute-label\">dependents</td>\n        <td>\n          ";
-  stack1 = helpers.each.call(depth0, depth0.dependents, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
+  stack1 = helpers.each.call(depth0, depth0.dependents, {hash:{},inverse:self.noop,fn:self.program(5, program5, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
-  buffer += "\n        </td>\n      </tr>\n      <tr>\n        <td class=\"attribute-label\">watchers</td>\n        <td>";
+  buffer += "\n        </td>\n      </tr>\n      <tr>\n        <td class=\"attribute-label\">watchers</td>\n        <td><i class=\"icon-star\"></i> ";
   if (stack1 = helpers.stars) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.stars; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
-    + " stars</td>\n      </tr>\n    </tbody>\n  </table>\n  <div class=\"activate-player\">\n    <a href=\"#\">Demo this module</a>\n  </div>\n</div>\n";
+    + "</td>\n      </tr>\n    </tbody>\n  </table>\n  <div class=\"activate-player\">\n    <a href=\"#\">Demo this module</a>\n  </div>\n</div>\n";
   return buffer;
+  });
+
+this["templates"]["creating"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
+  this.compilerInfo = [2,'>= 1.0.0-rc.3'];
+helpers = helpers || Handlebars.helpers; data = data || {};
+  
+
+
+  return "<h1>Creating your own web audio components</h1>\n";
   });
 
 this["templates"]["list"] = Handlebars.template(function (Handlebars,depth0,helpers,partials,data) {
@@ -13860,7 +13922,11 @@ helpers = helpers || Handlebars.helpers; data = data || {};
 function program1(depth0,data) {
   
   var buffer = "", stack1;
-  buffer += "\n    <tr>\n      <td class=\"name\">\n        <h4>\n          <a href=\"#components/";
+  buffer += "\n    <tr data-component=\"";
+  if (stack1 = helpers.repo) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
+  else { stack1 = depth0.repo; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
+  buffer += escapeExpression(stack1)
+    + "\">\n      <td class=\"name\">\n        <h4>\n          <a href=\"#components/";
   if (stack1 = helpers.repo) { stack1 = stack1.call(depth0, {hash:{},data:data}); }
   else { stack1 = depth0.repo; stack1 = typeof stack1 === functionType ? stack1.apply(depth0) : stack1; }
   buffer += escapeExpression(stack1)
@@ -13888,7 +13954,7 @@ function program1(depth0,data) {
   return buffer;
   }
 
-  buffer += "<table class=\"table components\">\n  ";
+  buffer += "<input class=\"search\" type=\"text\" placeholder=\"search...\" />\n<table class=\"table components\">\n  ";
   stack1 = helpers.each.call(depth0, depth0.components, {hash:{},inverse:self.noop,fn:self.program(1, program1, data),data:data});
   if(stack1 || stack1 === 0) { buffer += stack1; }
   buffer += "\n</table>\n";
@@ -17176,6 +17242,228 @@ require.register("jsantell-allen/allen.js", function(exports, require, module){
 }).call(this);
 
 });
+require.register("philbooth-vagueDate.js/src/vagueDate.js", function(exports, require, module){
+/**
+ * This module exports function for creating and consuming
+ * vague dates, e.g. 'yesterday', 'today' or 'next week'.
+ */
+
+/*globals define, module */
+
+(function (globals) {
+    'use strict';
+
+    var times = {
+        day: 86400000, // 1000 ms * 60 s * 60 m * 24 h
+        week: 604800000, // 1000 ms * 60 s * 60 m * 24 h * 7 d
+        month: 2678400000, // 1000 ms * 60 s * 60 m * 24 h * 31 d
+        year: 31536000000 // 1000 ms * 60 s * 60 m * 24 h * 365 d
+    },
+
+    cardinalities = {
+        day: 7,
+        week: 52,
+        month: 12
+    },
+
+    functions = {
+        get: getVagueDate
+    };
+
+    exportFunctions();
+
+    /**
+     * Public function `get`.
+     *
+     * Returns a vague date string.
+     *
+     * @option [from] {Date}    The origin time. Defaults to `Date.now()`.
+     * @option [to] {Date}      The target time. Defaults to `Date.now()`.
+     * @option [units] {string} If `from` or `to` are timestamps instead of date instances,
+     *                          this indicates the units that they're measured in. Can be
+     *                          either `ms` for milliseconds or `s` for seconds. Defaults to
+     *                          `ms`.
+     */
+    function getVagueDate (options) {
+        var units = normaliseUnits(options.units),
+            now = Date.now(),
+            from = normaliseTime(options.from, units, now),
+            to = normaliseTime(options.to, units, now),
+            difference = from.timestamp - to.timestamp,
+            absoluteDifference = Math.abs(difference);
+
+        return estimate(absoluteDifference, from, to) || getYearlyDifference(absoluteDifference, difference);
+    }
+
+    function normaliseUnits (units) {
+        if (typeof units === 'undefined') {
+            return 'ms';
+        }
+
+        if (units === 's' || units === 'ms') {
+            return units;
+        }
+
+        throw new Error('Invalid units');
+    }
+
+    function normaliseTime (time, units, defaultTime) {
+        if (typeof time === 'undefined') {
+            return createTimeFrom(defaultTime);
+        }
+
+        if (typeof time === 'string') {
+            time = parseInt(time, 10);
+        }
+
+        if (isNotDate(time) && isNotTimestamp(time)) {
+            throw new Error('Invalid time');
+        }
+
+        if (typeof time === 'number' && units === 's') {
+            time *= 1000;
+        }
+
+        return createTimeFrom(time);
+    }
+
+    function isNotDate (date) {
+        return isDate(date) === false;
+    }
+
+    function isDate (date) {
+        return Object.prototype.toString.call(date) === "[object Date]" && isNaN(date.getTime()) === false;
+    }
+
+    function isNotTimestamp (timestamp) {
+        return isTimestamp(timestamp) === false;
+    }
+
+    function isTimestamp (timestamp) {
+        return typeof timestamp === 'number' && isNaN(timestamp) === false;
+    }
+
+    function createTimeFrom (thing) {
+        if (isDate(thing)) {
+            return createTimeFromDate(thing);
+        }
+
+        if (isTimestamp(thing)) {
+            return createTimeFromTimestamp(thing);
+        }
+    }
+
+    function createTimeFromDate (date) {
+        return createTime(date.getTime(), date);
+    }
+
+    function createTime (timestamp, date) {
+        return {
+            timestamp: timestamp,
+            day: date.getDay(),
+            week: getWeek(date),
+            month: date.getMonth(),
+            year: date.getYear()
+        };
+    }
+
+    function getWeek (date) {
+        var rollover = 0,
+            yearStart = new Date(date.getFullYear(), 0, 1);
+
+        if (yearStart.getDay() > date.getDay()) {
+            rollover = 1;
+        }
+
+        return Math.floor((date.getTime() - yearStart.getTime()) / times.week) + rollover - 1;
+    }
+
+    function createTimeFromTimestamp (timestamp) {
+        return createTime(timestamp, new Date(timestamp));
+    }
+
+    function estimate (difference, from, to) {
+        return estimateDay(difference, from, to) ||
+            estimateWeek(difference, from, to) ||
+            estimateMonth(difference, from, to) ||
+            estimateYear(from, to);
+    }
+
+    function estimateDay (difference, from, to) {
+        return estimatePeriod(difference, 'day', from, to, 'today', 'tomorrow', 'yesterday');
+    }
+
+    function estimatePeriod (difference, period, from, to, current, next, previous) {
+        if (difference < times[period] * 2) {
+            if (from[period] === to[period]) {
+                return current;
+            }
+
+            if (areConsecutive(from[period], to[period], cardinalities[period])) {
+                return next;
+            }
+
+            if (areConsecutive(to[period], from[period], cardinalities[period])) {
+                return previous;
+            }
+        }
+    }
+
+    function areConsecutive (lesser, greater, cardinality) {
+        return lesser === greater - 1 || (lesser === cardinality - 1 && greater === 0);
+    }
+
+    function estimateWeek (difference, from, to) {
+        return estimateUniformPeriod(difference, 'week', from, to);
+    }
+
+    function estimateUniformPeriod (difference, period, from, to) {
+        return estimatePeriod(difference, period, from, to, 'this ' + period, 'next ' + period, 'last ' + period);
+    }
+
+    function estimateMonth (difference, from, to) {
+        return estimateUniformPeriod(difference, 'month', from, to);
+    }
+
+    function estimateYear (from, to) {
+        if (from.year === to.year) {
+            return 'this year';
+        }
+
+        if (from.year === to.year + 1) {
+            return 'last year';
+        }
+
+        if (from.year === to.year - 1) {
+            return 'next year';
+        }
+    }
+
+    function getYearlyDifference(absoluteDifference, difference) {
+        var years = Math.floor(absoluteDifference / times.year);
+
+        if (difference < 0) {
+            return 'in ' + years + ' years';
+        }
+
+        return years + ' years ago';
+    }
+
+    function exportFunctions () {
+        if (typeof define === 'function' && define.amd) {
+            define(function () {
+                return functions;
+            });
+        } else if (typeof module !== 'undefined' && module !== null) {
+            module.exports = functions;
+        } else {
+            globals.vagueDate = functions;
+        }
+    }
+}(this));
+
+
+});
 require.alias("web-audio-components-rack/index.js", "component.fm/deps/rack/index.js");
 require.alias("web-audio-components-rack/template.js", "component.fm/deps/rack/template.js");
 require.alias("matthewmueller-hogan/hogan.js", "web-audio-components-rack/deps/hogan/hogan.js");
@@ -17243,6 +17531,10 @@ require.alias("jsantell-allen/allen.js", "component.fm/deps/allen/allen.js");
 require.alias("jsantell-allen/index.js", "component.fm/deps/allen/index.js");
 require.alias("jsantell-allen/index.js", "jsantell-allen/index.js");
 
+require.alias("philbooth-vagueDate.js/src/vagueDate.js", "component.fm/deps/vagueDate.js/src/vagueDate.js");
+require.alias("philbooth-vagueDate.js/src/vagueDate.js", "component.fm/deps/vagueDate.js/index.js");
+require.alias("philbooth-vagueDate.js/src/vagueDate.js", "philbooth-vagueDate.js/index.js");
+
 
 ;(function(e,t,n){function i(n,s){if(!t[n]){if(!e[n]){var o=typeof require=="function"&&require;if(!s&&o)return o(n,!0);if(r)return r(n,!0);throw new Error("Cannot find module '"+n+"'")}var u=t[n]={exports:{}};e[n][0](function(t){var r=e[n][1][t];return i(r?r:t)},u,u.exports)}return t[n].exports}var r=typeof require=="function"&&require;for(var s=0;s<n.length;s++)i(n[s]);return i})({1:[function(require,module,exports){
 var Router = require('./router');
@@ -17279,12 +17571,16 @@ var when = require('./lib/when');
 var Components = require('./collections/components');
 var ListView = require('./views/list');
 var ComponentView = require('./views/component');
+var ContentView = require('./views/content');
 
 module.exports = Backbone.Router.extend({
 
   routes: {
     '': 'home',
-    'components/:owner/:module': 'component'
+    'search/:query': 'query',
+    'components/:owner/:module': 'component',
+    'about': 'about',
+    'creating': 'creating'
   },
 
   initialize: function () {
@@ -17297,6 +17593,10 @@ module.exports = Backbone.Router.extend({
       success: deferred.resolve,
       error: deferred.reject
     });
+
+    this.initialized.then(null, function (err) {
+      console.error('Could not fetch components');
+    });
   },
 
   clearView: function () {
@@ -17308,19 +17608,26 @@ module.exports = Backbone.Router.extend({
   setView: function (view) {
     this.clearView();
     this.initialized.then(function () {
-      console.log(view);
       $('#main').html(view.render().el);
     });
     this.view = view;
   },
 
   home: function () {
-    if (!this.listView) {
-      this.listView = new ListView({
-        components: this.components
-      });
+    this.setView(new ListView({
+      components: this.components
+    }));
+  },
+
+  query: function (query) {
+    if (this.view && this.view.name === 'list')
+      this.view.setQuery(query);
+    else {
+      this.home();
+      this.initialized.then(function () {
+        this.view.setQuery(query);
+      }.bind(this));
     }
-    this.setView(this.listView);
   },
 
   component: function (owner, module) {
@@ -17333,10 +17640,22 @@ module.exports = Backbone.Router.extend({
       });
       router.setView(view);
     });
+  },
+
+  about: function () {
+    this.setView(new ContentView ({
+      template: 'about'
+    }));
+  },
+
+  creating: function () {
+    this.setView(new ContentView ({
+      template: 'creating'
+    }));
   }
 });
 
-},{"./lib/when":4,"./collections/components":5,"./views/list":6,"./views/component":7}],8:[function(require,module,exports){
+},{"./lib/when":4,"./collections/components":5,"./views/list":6,"./views/component":7,"./views/content":8}],9:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -18215,7 +18534,7 @@ define(function () {
 );
 
 })(require("__browserify_process"))
-},{"__browserify_process":8}],5:[function(require,module,exports){
+},{"__browserify_process":9}],5:[function(require,module,exports){
 var config = require('../config');
 
 module.exports = Backbone.Collection.extend({
@@ -18225,12 +18544,15 @@ module.exports = Backbone.Collection.extend({
   }
 });
 
-},{"../config":3,"../models/component":9}],6:[function(require,module,exports){
+},{"../config":3,"../models/component":10}],6:[function(require,module,exports){
 var View = require('./view');
 
 module.exports = View.extend({
   name: 'list',
   template: templates.list,
+  events: {
+    'keyup .search': 'handleQuery'
+  },
 
   initialize: function (options) {
     this.components = options.components;
@@ -18238,14 +18560,34 @@ module.exports = View.extend({
 
   getRenderData: function () {
     return { components: this.components.toJSON() };
+  },
+
+  filter: function (query) {
+    this.components.each(function (component) {
+      this.$('tr[data-component="' + component.get('repo') + '"]')[
+        component.matches(query) ? 'show' : 'hide'
+      ]();
+    }.bind(this));
+  },
+
+  setQuery: function (query) {
+    this.$('.search').val(query);
+    this.filter(query);
+  },
+
+  // Allows route to handle the actual filtering
+  handleQuery: function (e) {
+    var query = $(e.target).val();
+    window.location.hash = 'search/' + query;
   }
 
 });
 
-},{"./view":10}],7:[function(require,module,exports){
+},{"./view":11}],7:[function(require,module,exports){
 var View = require('./view');
 var PlayerView = require('./player');
 var config = require('../config');
+var vagueDate = require('../lib/vagueDate');
 
 module.exports = View.extend({
   name: 'component',
@@ -18262,9 +18604,12 @@ module.exports = View.extend({
 
   getRenderData: function () {
     var data = this.component.toJSON();
-    data.keywords = data.keywords.join(' ');
+    data.keywords = data.keywords.join(', ');
+    data.twitter = (data.twitter || '').replace('@', '');
+    data.github = (data.github || '').replace('@', '');
     data.dependencies = data.dependencies.map(formatDep.bind(this));
     data.dependents = data.dependents.map(formatDep.bind(this));
+    data.updated = vagueDate.get({ to: new Date(data.updated) });
     return data;
   },
 
@@ -18280,6 +18625,7 @@ module.exports = View.extend({
 });
 
 function formatDep (dep) {
+  dep = dep.name || dep;
   console.log('format', dep, this.components.where({repo:dep}));
   return {
     name: dep,
@@ -18287,7 +18633,18 @@ function formatDep (dep) {
   };
 }
 
-},{"./view":10,"./player":11,"../config":3}],10:[function(require,module,exports){
+},{"./view":11,"./player":12,"../config":3,"../lib/vagueDate":13}],8:[function(require,module,exports){
+var View = require('./view');
+
+module.exports = View.extend({
+  name: 'content',
+
+  initialize: function (options) {
+    this.template = templates[options.template];
+  }
+});
+
+},{"./view":11}],11:[function(require,module,exports){
 module.exports = Backbone.View.extend({
   render: function () {
     this.beforeRender();
@@ -18302,7 +18659,10 @@ module.exports = Backbone.View.extend({
   beforeRender: function () {}
 });
 
-},{}],9:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
+module.exports = window.require('philbooth-vagueDate.js');
+
+},{}],10:[function(require,module,exports){
 var config = require('../config');
 var when = require('../lib/when');
 
@@ -18346,7 +18706,7 @@ module.exports = Backbone.Model.extend({
   }
 });
 
-},{"../config":3,"../lib/when":4}],11:[function(require,module,exports){
+},{"../config":3,"../lib/when":4}],12:[function(require,module,exports){
 var View = require('./view');
 var allen = require('../lib/allen');
 var Rack = require('../lib/rack');
@@ -18468,10 +18828,10 @@ module.exports = View.extend({
 
 });
 
-},{"./view":10,"../lib/allen":12,"../lib/rack":13,"../lib/when":4}],12:[function(require,module,exports){
+},{"./view":11,"../lib/allen":14,"../lib/rack":15,"../lib/when":4}],14:[function(require,module,exports){
 module.exports = window.require('jsantell-allen');
 
-},{}],13:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 module.exports = window.require('web-audio-components-rack');
 
 },{}]},{},[1])

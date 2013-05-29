@@ -56,7 +56,8 @@ module.exports = function(grunt) {
       },
       css: {
         src: [
-          'vendor/styles/bootstrap/bootstrap.css',
+          'vendor/styles/bootstrap.css',
+          'vendor/styles/font-awesome.css',
           'client/build/build.css',
           'public/styles/app.css'
         ],

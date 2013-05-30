@@ -9,8 +9,8 @@ module.exports = View.extend({
   template: templates.player,
   events: {
     'change .samples' : 'handleSampleChange',
-  'click .play-button' : 'handlePlayPause',
-  'click .hide-button' : 'handleHide'
+    'click .play-button' : 'handlePlayPause',
+    'click .hide-button' : 'handleHide'
   },
 
   initialize: function () {
@@ -30,6 +30,10 @@ module.exports = View.extend({
   afterRender: function () {
     this.$play = this.$('.play-button');
     this.$samples = this.$('.samples');
+  },
+
+  destroy: function () {
+    this.disconnect();
   },
 
   initializeRack: function () {

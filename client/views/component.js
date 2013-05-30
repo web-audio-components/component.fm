@@ -27,6 +27,11 @@ module.exports = View.extend({
     return data;
   },
 
+  destroy: function () {
+    if (this.player)
+      this.player.destroy();
+  },
+
   activatePlayer: function (e) {
     e.preventDefault();
     this.player = new PlayerView({ model: this.component });
@@ -40,7 +45,6 @@ module.exports = View.extend({
 
 function formatDep (dep) {
   dep = dep.name || dep;
-  console.log('format', dep, this.components.where({repo:dep}));
   return {
     name: dep,
     isAudio: !!this.components.where({ repo: dep }).length

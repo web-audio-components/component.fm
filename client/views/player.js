@@ -3,6 +3,7 @@ var allen = require('../lib/allen');
 var Rack = require('../lib/rack');
 var when = require('../lib/when');
 var context = allen.getAudioContext();
+var EXT = allen.canPlayType('mp3') ? '.mp3' : '.ogg';
 
 module.exports = View.extend({
   name : 'player',
@@ -44,7 +45,7 @@ module.exports = View.extend({
   getBuffer: function () {
     var deferred = when.defer();
     this.showLoading();
-    allen.getBuffer('samples/' + this.sample + '.mp3', function (xhr) {
+    allen.getBuffer('samples/' + this.sample + EXT, function (xhr) {
       this.hideLoading();
       deferred.resolve(xhr.target.response);
     }.bind(this));

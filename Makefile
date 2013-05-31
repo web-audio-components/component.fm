@@ -9,9 +9,9 @@ CLEANCSS=./node_modules/clean-css/bin/cleancss
 all: install jade stylus browserify concat min
 
 jade:
-	node $(JADE) $(CLIENT)/markup/index.jade --obj '{locals:{"ENV":"development"}}' --pretty --out $(PUBLIC)
+	node $(JADE) $(CLIENT)/markup/index.jade --obj '{"env":"development"}' --pretty --out $(PUBLIC)
 	mv $(PUBLIC)/index.html $(PUBLIC)/dev.html
-	node $(JADE) $(CLIENT)/markup/index.jade --obj '{locals:{"ENV":"production"}}' --out $(PUBLIC)
+	node $(JADE) $(CLIENT)/markup/index.jade --obj '{"env":"production"}' --out $(PUBLIC)
 
 stylus:
 	mkdir -p $(PUBLIC)/styles

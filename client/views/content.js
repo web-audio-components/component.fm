@@ -1,4 +1,5 @@
 var View = require('./view');
+var templates = require('../lib/templates');
 
 module.exports = View.extend({
   name: 'content',

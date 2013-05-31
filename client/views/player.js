@@ -7,7 +7,6 @@ var EXT = allen.canPlayType('mp3') ? '.mp3' : '.ogg';
 
 module.exports = View.extend({
   name : 'player',
-  template: templates.player,
   events: {
     'change .samples' : 'handleSampleChange',
     'click .play-button' : 'handlePlayPause',

@@ -1,3 +1,5 @@
 node_modules/
 client/components/
 client/build/
+public/styles
+public/scripts

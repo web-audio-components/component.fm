@@ -1,6 +1,6 @@
 <input class="search" type="text" placeholder="search..." />
 <table class="table components">
-  {{#each components}}
+  {{#components}}
     <tr data-component="{{repo}}">
       <td class="name">
         <h4>
@@ -15,5 +15,5 @@
       <td class="description">{{description}}</td>
       <td class="stars"><i class="icon-star"></i>{{stars}}</td>
     </tr>
-  {{/each}}
+  {{/components}}
 </table>

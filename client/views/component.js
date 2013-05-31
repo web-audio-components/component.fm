@@ -5,7 +5,6 @@ var vagueDate = require('../lib/vagueDate');
 
 module.exports = View.extend({
   name: 'component',
-  template: templates.component,
 
   events: {
     'click .activate-player a': 'activatePlayer'

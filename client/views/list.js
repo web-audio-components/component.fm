@@ -2,7 +2,6 @@ var View = require('./view');
 
 module.exports = View.extend({
   name: 'list',
-  template: templates.list,
   events: {
     'keyup .search': 'handleQuery'
   },

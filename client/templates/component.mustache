@@ -7,12 +7,12 @@
         <td class="attribute-label">author</td>
         <td>
           {{author}}
-          {{#if twitter}}
+          {{#twitter}}
             <a href="http://twitter.com/{{twitter}}" title="{{twitter}}" on Twitter"><i class="icon-twitter"></i> @{{twitter}}</a>
-          {{/if}}
-          {{#if github}}
+          {{/twitter}}
+          {{#github}}
             <a href="https://github.com/{{github}}" title="{{github}}" on GitHub"><i class="icon-github"></i> @{{github}}</a>
-          {{/if}}
+          {{/github}}
         </td>
       </tr>
       <tr>
@@ -34,29 +34,31 @@
       <tr>
         <td class="attribute-label">dependencies</td>
         <td>
-          {{#each dependencies}}
+          {{#dependencies}}
             <a href="
-              {{#if isAudio}}
+              {{#isAudio}}
                 #components/{{name}}
-              {{else}}
+              {{/isAudio}}
+              {{^isAudio}}
                 http://github.com/{{name}}
-              {{/if}}
+              {{/isAudio}}
             " title="{{name}}">{{name}}</a>
-          {{/each}}
+          {{/dependencies}}
         </td>
       </tr>
       <tr>
         <td class="attribute-label">dependents</td>
         <td>
-          {{#each dependents}}
+          {{#dependents}}
             <a href="
-              {{#if isAudio}}
+              {{#isAudio}}
                 #components/{{name}}
-              {{else}}
+              {{/isAudio}}
+              {{^isAudio}}
                 http://github.com/{{name}}
-              {{/if}}
+              {{/isAudio}}
             " title="{{name}}">{{name}}</a>
-          {{/each}}
+          {{/dependents}}
         </td>
       </tr>
       <tr>

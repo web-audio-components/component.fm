@@ -11,7 +11,6 @@ templates.component = fs.readFileSync(__dirname + '/../templates/component.musta
 templates.player = fs.readFileSync(__dirname + '/../templates/player.mustache');
 
 _.each(templates, function (val, key) {
-  console.log('val: ', val, 'key: ', key);
   templates[key] = Mustache.compile(val);
 });
 module.exports = templates;

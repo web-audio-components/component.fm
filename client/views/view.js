@@ -10,7 +10,6 @@ module.exports = Backbone.View.extend({
     var data = this.getRenderData ? this.getRenderData() : {};
     this.$el.html(this.template(data));
 
-    console.log(this.template);
     this.afterRender();
     return this;
   },

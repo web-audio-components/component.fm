@@ -13,6 +13,9 @@ module.exports = Backbone.View.extend({
     this.afterRender();
     return this;
   },
+  destroy: function () {
+    this.remove();
+  },
   afterRender: function () {},
   beforeRender: function () {}
 });

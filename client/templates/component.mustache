@@ -1,5 +1,10 @@
 <div class="row">
-  <h1>{{name}}</h1>
+  <div class="component-title">
+    <h1>{{name}}</h1>
+    <span>
+      <a href="https://github.com/{{repo}}" title="GitHub repository for {{name}}">{{repo}}</a>
+    </span>
+  </div>
   <div class="description">{{description}}</div>
   <table class="table table-bordered table-striped">
     <tbody>
@@ -14,10 +19,6 @@
             <a href="https://github.com/{{github}}" title="{{github}}" on GitHub"><i class="icon-github"></i> @{{github}}</a>
           {{/github}}
         </td>
-      </tr>
-      <tr>
-        <td class="attribute-label">repo</td>
-        <td><a href="https://github.com/{{repo}}" title="GitHub repository for {{name}}">{{repo}}</a></td>
       </tr>
       <tr>
         <td class="attribute-label">version</td>

@@ -23,8 +23,8 @@ module.exports = View.extend({
       this.initializeRack();
       return this.node;
     }.bind(this))
-      .then(this.getBuffer.bind(this))
-      .then(this.connect.bind(this));
+      .then(this.getBuffer.bind(this), this.handleError.bind(this))
+      .then(this.connect.bind(this), this.handleError.bind(this));
   },
 
   afterRender: function () {
@@ -34,6 +34,7 @@ module.exports = View.extend({
 
   destroy: function () {
     this.disconnect();
+    this.remove();
   },
 
   initializeRack: function () {
@@ -105,7 +106,7 @@ module.exports = View.extend({
 
   // Event handlers
 
-  handlePlayPause: function ( e ) {
+  handlePlayPause: function (e) {
     e.preventDefault();
 
     // Abort if button has class disabled
@@ -119,6 +120,9 @@ module.exports = View.extend({
     this.sample = this.$samples.find(':selected').val();
     this.getBuffer()
       .then(this.connect.bind(this));
-  }
+  },
 
+  handleError: function (reason) {
+    this.trigger('error', reason);
+  }
 });

@@ -32,6 +32,7 @@ concat:
 	cat ./vendor/scripts/jquery-2.0.0.js > $(PUBLIC)/scripts/site.js
 	cat ./vendor/scripts/underscore-1.4.4.js >> $(PUBLIC)/scripts/site.js
 	cat ./vendor/scripts/backbone-1.0.0.js >> $(PUBLIC)/scripts/site.js
+	cat ./vendor/scripts/bootstrap-dropdown.js >> $(PUBLIC)/scripts/site.js
 	cat $(CLIENT)/build/build.js >> $(PUBLIC)/scripts/site.js
 	cat $(PUBLIC)/scripts/app.js >> $(PUBLIC)/scripts/site.js
 	

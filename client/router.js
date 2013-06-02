@@ -40,7 +40,7 @@ module.exports = Backbone.Router.extend({
     this.clearView();
     this.initialized.then(function () {
       $('#main').html(view.render().el);
-    });
+    }).then(null, console.error.bind(console));
     this.view = view;
   },
 

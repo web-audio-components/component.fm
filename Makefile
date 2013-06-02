@@ -6,7 +6,7 @@ BROWSERIFY=./node_modules/browserify/bin/cmd.js
 UGLIFY=./node_modules/uglify-js/bin/uglifyjs
 CLEANCSS=./node_modules/clean-css/bin/cleancss
 
-all: install jade stylus browserify concat min
+all: install components jade stylus browserify concat min
 
 jade:
 	node $(JADE) $(CLIENT)/markup/index.jade --obj '{"env":"development"}' --pretty --out $(PUBLIC)
@@ -22,8 +22,7 @@ stylus:
 
 components:
 	cd $(CLIENT) && component build --prefix './'
-	cp -r $(CLIENT)/build/web-audio-components-rack \
-		$(PUBLIC)/styles
+	cp -r $(CLIENT)/build/web-audio-components-rack $(PUBLIC)/styles
 
 browserify:
 	mkdir -p $(PUBLIC)/scripts

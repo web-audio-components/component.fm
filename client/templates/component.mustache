@@ -1,74 +1,72 @@
-<div class="row">
-  <div class="component-title">
-    <h1>{{name}}</h1>
-    <span>
-      <a href="https://github.com/{{repo}}" title="GitHub repository for {{name}}">{{repo}}</a>
-    </span>
-  </div>
-  <div class="description">{{description}}</div>
-  <table class="table table-bordered table-striped">
-    <tbody>
-      <tr>
-        <td class="attribute-label">author</td>
-        <td>
-          {{author}}
-          {{#twitter}}
-            <a href="http://twitter.com/{{twitter}}" title="{{twitter}}" on Twitter"><i class="icon-twitter"></i> @{{twitter}}</a>
-          {{/twitter}}
-          {{#github}}
-            <a href="https://github.com/{{github}}" title="{{github}}" on GitHub"><i class="icon-github"></i> @{{github}}</a>
-          {{/github}}
-        </td>
-      </tr>
-      <tr>
-        <td class="attribute-label">version</td>
-        <td>{{version}}</td>
-      </tr>
-      <tr>
-        <td class="attribute-label">keywords</td>
-        <td>{{keywords}}</td>
-      </tr>
-      <tr>
-        <td class="attribute-label">updated</td>
-        <td>{{updated}}</td>
-      </tr>
-      <tr>
-        <td class="attribute-label">dependencies</td>
-        <td>
-          {{#dependencies}}
-            <a href="
-              {{#isAudio}}
-                #components/{{name}}
-              {{/isAudio}}
-              {{^isAudio}}
-                http://github.com/{{name}}
-              {{/isAudio}}
-            " title="{{name}}">{{name}}</a>
-          {{/dependencies}}
-        </td>
-      </tr>
-      <tr>
-        <td class="attribute-label">dependents</td>
-        <td>
-          {{#dependents}}
-            <a href="
-              {{#isAudio}}
-                #components/{{name}}
-              {{/isAudio}}
-              {{^isAudio}}
-                http://github.com/{{name}}
-              {{/isAudio}}
-            " title="{{name}}">{{name}}</a>
-          {{/dependents}}
-        </td>
-      </tr>
-      <tr>
-        <td class="attribute-label">watchers</td>
-        <td><i class="icon-star"></i> {{stars}}</td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="activate-player">
-    <a href="#">Demo this module</a>
-  </div>
+<div class="component-title">
+  <h1>{{name}}</h1>
+  <span>
+    <a href="https://github.com/{{repo}}" title="GitHub repository for {{name}}">{{repo}}</a>
+  </span>
+</div>
+<div class="description">{{description}}</div>
+<table class="table table-bordered table-striped">
+  <tbody>
+    <tr>
+      <td class="attribute-label">author</td>
+      <td>
+        {{author}}
+        {{#twitter}}
+          <a href="http://twitter.com/{{twitter}}" title="{{twitter}}" on Twitter"><i class="icon-twitter"></i> @{{twitter}}</a>
+        {{/twitter}}
+        {{#github}}
+          <a href="https://github.com/{{github}}" title="{{github}}" on GitHub"><i class="icon-github"></i> @{{github}}</a>
+        {{/github}}
+      </td>
+    </tr>
+    <tr>
+      <td class="attribute-label">version</td>
+      <td>{{version}}</td>
+    </tr>
+    <tr>
+      <td class="attribute-label">keywords</td>
+      <td>{{keywords}}</td>
+    </tr>
+    <tr>
+      <td class="attribute-label">updated</td>
+      <td>{{updated}}</td>
+    </tr>
+    <tr>
+      <td class="attribute-label">dependencies</td>
+      <td>
+        {{#dependencies}}
+        <a href="
+          {{#isAudio}}
+            #components/{{name}}
+          {{/isAudio}}
+          {{^isAudio}}
+            http://github.com/{{name}}
+          {{/isAudio}}
+        " title="{{name}}">{{name}}</a>
+        {{/dependencies}}
+      </td>
+    </tr>
+    <tr>
+      <td class="attribute-label">dependents</td>
+      <td>
+        {{#dependents}}
+        <a href="
+          {{#isAudio}}
+            #components/{{name}}
+          {{/isAudio}}
+          {{^isAudio}}
+            http://github.com/{{name}}
+          {{/isAudio}}
+        " title="{{name}}">{{name}}</a>
+        {{/dependents}}
+      </td>
+    </tr>
+    <tr>
+      <td class="attribute-label">watchers</td>
+      <td><i class="icon-star"></i> {{stars}}</td>
+    </tr>
+  </tbody>
+</table>
+<div class="activate-player">
+  <a href="#">Demo this module</a>
 </div>

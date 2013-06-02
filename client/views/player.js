@@ -8,7 +8,7 @@ var EXT = allen.canPlayType('mp3') ? '.mp3' : '.ogg';
 module.exports = View.extend({
   name : 'player',
   events: {
-    'change .samples' : 'handleSampleChange',
+    'click .samples a' : 'handleSampleChange',
     'click .play-button' : 'handlePlayPause',
     'click .hide-button' : 'handleHide'
   },
@@ -29,7 +29,6 @@ module.exports = View.extend({
 
   afterRender: function () {
     this.$play = this.$('.play-button');
-    this.$samples = this.$('.samples');
   },
 
   destroy: function () {
@@ -115,9 +114,14 @@ module.exports = View.extend({
     this.$play.data('playing') ? this.stopSample() : this.playSample();
   },
 
-  handleSampleChange: function () {
+  handleSampleChange: function (e) {
+    e.preventDefault();
+    var $target = $(e.target);
+    this.$('.dropdown-toggle').html(
+      $target.text() + '<span class="caret"></span>'
+    );
     this.stopSample();
-    this.sample = this.$samples.find(':selected').val();
+    this.sample = $target.data('sample');
     this.getBuffer()
       .then(this.connect.bind(this));
   },

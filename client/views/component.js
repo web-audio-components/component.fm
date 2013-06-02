@@ -8,7 +8,7 @@ module.exports = View.extend({
   name: 'component',
 
   events: {
-    'click .activate-player a': 'activatePlayer'
+    'click .activate-player button': 'activatePlayer'
   },
 
   initialize: function (options) {
@@ -41,7 +41,6 @@ module.exports = View.extend({
     this.player.on('error', this.handleError, this);
     this.$('.activate-player')
       .removeClass('activate-player')
-      .addClass('player')
       .html(this.player.render().el);
   },
 

@@ -1,10 +1,7 @@
 <div class="component-title">
   <h1>{{name}}</h1>
-  <span>
-    <a href="https://github.com/{{repo}}" title="GitHub repository for {{name}}">{{repo}}</a>
-  </span>
-</div>
 <div class="description">{{description}}</div>
+</div>
 <table class="table table-bordered table-striped">
   <tbody>
     <tr>
@@ -17,6 +14,12 @@
         {{#github}}
           <a href="https://github.com/{{github}}" title="{{github}}" on GitHub"><i class="icon-github"></i> @{{github}}</a>
         {{/github}}
+      </td>
+    </tr>
+    <tr>
+      <td class="attribute-label">repository</td>
+      <td>
+        <a href="https://github.com/{{repo}}" title="GitHub repository for {{name}}">{{repo}}</a>
       </td>
     </tr>
     <tr>
@@ -68,5 +71,6 @@
   </tbody>
 </table>
 <div class="activate-player">
-  <a href="#">Demo this module</a>
+  <button class="btn btn-large btn-info">Demo {{name}}</button>
+  <p>Trying out a component injects the component into the page and wires up the AudioContext, with the ability to control the component's parameters. Be aware that this may have unintended side effects.</p>
 </div>

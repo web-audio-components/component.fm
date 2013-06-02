@@ -1,26 +1,31 @@
 <div class="player-loading">
   <div class="loading-display"></div>
 </div>
-<div class="row">
-  <div class="player">
-    <div class="controls">
-      <select class="samples">
-        <option value="vox">vocals</li>
-        <option value="lead">acoustic guitar lead</li>
-        <option value="rhythm">acoustic guitar rhythm</li>
-        <option value="solo-dry">electric guitar lead</li>
-      </select>
+<div class="player">
+  <div class="controls">
+    <div class="input-append">
       <div class="btn-group">
-        <a href="#" class="btn play-button" data-playing="false"><i class="icon-play"></i></a>
-      </div>
-      <div class="hide">
-        <a href="#" class="btn hide-button"><i class="icon-close"></i></a>
+        <button href="#" class="btn play-button" data-playing="false"><i class="icon-play"></i></button>
+        <button class="btn dropdown-toggle" data-toggle="dropdown">
+          Select audio sample...
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu samples">
+          <li><a href="#" data-sample="vox">vocals</a></li>
+          <li><a href="#" data-sample="lead">acoustic guitar lead</a></li>
+          <li><a href="#" data-sample="rhythm">acoustic guitar rhythm</a></li>
+          <li><a href="#" data-sample="solo-dry">electric guitar lead</a></li>
+        </ul>
       </div>
     </div>
-      <h3>{{name}}</h3>
-    <div class="module">
+    <div class="btn-group">
+    </div>
+    <div class="hide">
+    </div>
+  </div>
+  <h3>{{name}}</h3>
+  <div class="module">
 
-    </div>
   </div>
 </div>
 

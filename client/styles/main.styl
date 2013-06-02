@@ -1,7 +1,10 @@
+body
+  font-family: HelveticaNeue-Light,"Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif
+
 a
-  color #2ccdec
+  color #49afcd
   &:hover
-    color: darken(#2ccdec, 20%)
+    color: darken(#49afcd, 20%)
 
 a.grey-link
   color #aaa
@@ -9,7 +12,8 @@ a.grey-link
     color: darken(#aaa, 20%)
 
 #container
-  margin-top: 50px
+  margin-top: 60px
+  margin-bottom: 100px
 
 body:after
   content ""
@@ -27,13 +31,29 @@ body:after
   z-index -1
 
 .header
-  height 40px
-  background-image none
+  height 50px
   background-color #fff
   a
     color #2ccdec
     &:hover
       color: darken(#2ccdec, 20%)
+  .brand
+    margin: 0px
+    padding: 0px
+    width: 250px
+    span
+      float: left
+      padding: 15px 15px 10px
+      line-height: 20px
+  .logo
+    float: left
+    background url(../images/logo-trans-xsmall.png) no-repeat
+    height: 40px
+    width: 40px
+    margin-top: 5px
+
+.navbar .nav > li > a
+  padding: 15px 15px 10px
 
 .content
   display block
@@ -66,3 +86,16 @@ input[type="text"].search
   width: 940px
   text-indent: 5px
   font-size: 30px
+
+.activate-player
+  height: 157px
+  button, p
+    width: 500px
+    margin: auto auto
+    display: block
+
+.player
+  width: 832px
+  margin: 0 auto
+.caret
+  margin-left: 5px !important

@@ -6,8 +6,6 @@ function initialize () {
       var args = Array.prototype.slice.call(arguments, 1);
       var matched = f.apply(this, args);
 
-      console.log(this, this.fragment, matched);
-
       if (matched && window._gaq) {
         window._gaq.push([
           '_trackPageview',

@@ -45,6 +45,9 @@ concat:
 min:
 	node $(UGLIFY) $(PUBLIC)/scripts/site.js -o $(PUBLIC)/scripts/site.min.js
 	node $(CLEANCSS) $(PUBLIC)/styles/site.css -o $(PUBLIC)/styles/site.min.css
+	# Add GA script to production
+	cat ./vendor/scripts/ga.js > ./tmp && cat $(PUBLIC)/scripts/site.min.js >> ./tmp
+	mv ./tmp $(PUBLIC)/scripts/site.min.js
 
 install: 
 	@npm install

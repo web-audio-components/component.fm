@@ -5,6 +5,7 @@ STYLUS=./node_modules/stylus/bin/stylus
 BROWSERIFY=./node_modules/browserify/bin/cmd.js
 UGLIFY=./node_modules/uglify-js/bin/uglifyjs
 CLEANCSS=./node_modules/clean-css/bin/cleancss
+COMPONENT=../node_modules/component/bin/component
 
 all: install components jade stylus browserify concat min
 
@@ -21,7 +22,7 @@ stylus:
 	done
 
 components:
-	cd $(CLIENT) && component build --prefix './'
+	cd $(CLIENT) && $(COMPONENT) build --prefix './'
 	cp -r $(CLIENT)/build/web-audio-components-rack $(PUBLIC)/styles
 
 browserify:
@@ -47,6 +48,6 @@ min:
 
 install: 
 	@npm install
-	cd $(CLIENT) && component install
+	cd $(CLIENT) && $(COMPONENT) install
 
 .PHONY: jade stylus browserify components concat min

@@ -15,7 +15,7 @@
     "mustache": "*",
     "uglify-js": "*",
     "clean-css": "*",
-    "components": "*",
+    "component": "*",
     "browserify": "*",
     "brfs": "*"
   },

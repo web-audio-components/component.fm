@@ -21,6 +21,7 @@ module.exports = View.extend({
       var Node = window.require(this.model.get('name'));
       this.node = new Node(context);
       this.initializeRack();
+      this.hideLoading();
       return this.node;
     }.bind(this))
       .then(this.getBuffer.bind(this), this.handleError.bind(this))
@@ -43,9 +44,9 @@ module.exports = View.extend({
 
   getBuffer: function () {
     var deferred = when.defer();
-    this.showLoading();
+    this.disableControls();
     allen.getBuffer('samples/' + this.sample + EXT, function (xhr) {
-      this.hideLoading();
+      this.enableControls();
       deferred.resolve(xhr.target.response);
     }.bind(this));
     return deferred.promise;
@@ -90,17 +91,25 @@ module.exports = View.extend({
   // Loading GUI
 
   showLoading: function () {
-    this.$el
-      .find('.player-loading').show().end()
-      .find('select, a').prop('disabled', true)
-      .addClass('disabled');
+    this.$('.player-loading').show().end()
+      .find('.player').hide();
   },
 
   hideLoading: function () {
-    this.$el
-      .find('.player-loading').hide().end()
-      .find('select, a').prop('disabled', false)
-      .removeClass('disabled');
+    this.$('.player-loading').hide().end()
+      .find('.player').show();
+  },
+
+  // Loading samples
+  
+  disableControls: function () {
+    this.$('.controls button').addClass('disabled');
+    this.$('.controls .loading-small').show();
+  },
+  
+  enableControls: function () {
+    this.$('.controls button').removeClass('disabled');
+    this.$('.controls .loading-small').hide();
   },
 
   // Event handlers

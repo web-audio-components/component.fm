@@ -62,7 +62,10 @@ module.exports = View.extend({
   disconnect: function () {
     if (this.source && this.source.disconnect) {
       this.source.disconnect();
-      this.source.noteOff(0);
+      // In FF24, this throws an error if not yet playing
+      try {
+        this.source.noteOff(0);
+      } catch (e) { console.error(e); }
     }
     if (this.node)
       this.node.disconnect();

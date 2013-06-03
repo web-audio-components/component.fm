@@ -1,6 +1,6 @@
 {
   "name": "component.fm",
-  "version": "0.1.0-12",
+  "version": "0.1.0-20",
   "private": true,
   "main": "app.js",
   "scripts": {

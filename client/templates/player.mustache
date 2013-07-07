@@ -1,10 +1,10 @@
 <div class="player-loading">
   <div class="loading"></div>
 </div>
-<div class="player">
+<div class="player player-{{type}}">
   <div class="controls">
     <div class="input-append">
-      <div class="btn-group">
+      <div class="btn-group btn-group-effect">
         <button href="#" class="btn play-button" data-playing="false"><i class="icon-play"></i></button>
         <button class="btn dropdown-toggle" data-toggle="dropdown">
           Select audio sample...
@@ -16,6 +16,9 @@
           <li><a href="#" data-sample="rhythm">acoustic guitar rhythm</a></li>
           <li><a href="#" data-sample="solo-dry">electric guitar lead</a></li>
         </ul>
+      </div>
+      <div class="btn-group btn-group-generator">
+        <button href="#" class="btn play-button" data-playing="false"><i class="icon-play"></i></button>
       </div>
     </div>
     <div class="loading-small"></div>

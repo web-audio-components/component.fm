@@ -1,6 +1,8 @@
 <div class="component-title">
   <h1>{{name}}</h1>
-<div class="description">{{description}}</div>
+<div class="description">
+  {{description}} 
+</div>
 </div>
 <table class="table table-bordered table-striped">
   <tbody>
@@ -22,6 +24,28 @@
         <a href="https://github.com/{{repo}}" title="GitHub repository for {{name}}">{{repo}}</a>
       </td>
     </tr>
+    <tr>
+      <td class="attribute-label">type</td>
+      <td>
+        <span class="label">
+          {{#icon}}
+            <i class="icon-{{icon}}"></i>
+            {{type}}
+          {{/icon}}
+          {{^icon}}
+            <i class="icon-question"></i>
+            {{type}}
+          {{/icon}}
+        </span>
+      </td>
+    </tr>
+    <tr>
+      <td class="attribute-label">demo</td>
+      <td>
+        {{#demo}}
+          <a href="{{demo}}">Demo link for {{title}}</a>
+        {{/demo}}
+      </td>
     <tr>
       <td class="attribute-label">version</td>
       <td>{{version}}</td>
@@ -71,6 +95,11 @@
   </tbody>
 </table>
 <div class="activate-player">
-  <button class="btn btn-large btn-info">Demo {{name}}</button>
-  <p>Trying out a component injects the component into the page and wires up the AudioContext, with the ability to control the component's parameters. Be aware that this may have unintended side effects.</p>
+  <button class="btn {{^liveDemo}}disabled {{/liveDemo}} btn-large btn-info">Demo {{name}}</button>
+  {{#liveDemo}}
+    <p>Trying out a component injects the component into the page and wires up the AudioContext, with the ability to control the component's parameters. Be aware that this may have unintended side effects.</p>
+  {{/liveDemo}}
+  {{^liveDemo}}
+    <p>This component either lacks a type or is not a supported type component for live demo. Currently, only effect types can be demonstrated within the browser. Check out the <a href="https://github.com/{{repo}}">{{name}} repository</a> and try it out!</p>
+  {{/liveDemo}}
 </div>

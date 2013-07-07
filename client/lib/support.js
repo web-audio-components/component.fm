@@ -21,7 +21,13 @@ function setAlert (text, type) {
   var $alert = $('.alert');
   if (type) $alert.addClass('alert-' + type);
   $alert.text(text).show();
+
+  // Previously would fade out after DELAY ms -- let's leave it up
+  // for the time being as some modules do not work and fail gracefully
+  // on Firefox, and we cannot detect that
+  /*
   setTimeout(function () {
     $alert.fadeOut();
   }, DELAY);
+  */
 }

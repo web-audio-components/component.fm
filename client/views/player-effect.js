@@ -44,7 +44,7 @@ module.exports = Player.extend({
       this.source.disconnect();
       // In FF24, this throws an error if not yet playing
       try {
-        this.source.noteOff(0);
+        this.source.stop(0);
       } catch (e) { console.error(e); }
     }
     if (this.node)
@@ -55,7 +55,7 @@ module.exports = Player.extend({
     this.stop();
     this.getBuffer().then(function (buffer) {
       this.connect(buffer);
-      this.source.noteOn(0);
+      this.source.start(0);
       this.$play.data('playing', true)
         .find('i')
         .removeClass('icon-play')

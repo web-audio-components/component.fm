@@ -1,1 +1,28 @@
 <h1>About Web Audio Components</h1>
+
+<p>
+As the popularity of the Web Audio API increases, so does the need for reusing our audio effects, tools, synthesizers and DSP algorithms. To promote the sharing of code and interoperability of the audio tools we create, the <a href="https://github.com/web-audio-components/web-audio-components-spec">Web Audio Components specification</a> was created to solve the current "closed environment" pervasive in the web audio world with the following goals in mind:
+</p>
+
+<ul>
+  <li>Web Audio Components able to connect to and be connected by other WACs and native AudioNodes</li>
+  <li>Creation of composite audio nodes, comprised of several low-level AudioNodes, or other existing WACs</li>
+  <li>Allowing external libraries to manipulate WACs, like the Rack GUI on the effect node examples on this site</li>
+  <li>Allow a more succinct way of creating WACs with a library, rather than defining boilerplate for every WAC created</li>
+  <li>Sharing and reusing code -- rather than rewriting audio components or signal processing algorithms from scratch, just use an existing component found on the registry</li>
+</ul>
+
+<p>
+Web Audio Components use the <a href="https://github.com/component/component">Component(1)</a> registry and are built with the same tool. The <a href="http://api.component.fm/">Web Audio Components API</a> service is a subset of the Components registry, and this site, <a href="http://component.fm">component.fm</a> uses that API to display the current available Web Audio Components.
+</p>
+
+<p>For more information, check out the following links:</p>
+
+<ul>
+  <li><a href="https://github.com/web-audio-components/web-audio-components-spec">WAC specification</a></li>
+  <li><a href="http://api.component.fm">API Service</a> | [<a href="https://github.com/web-audio-components/web-audio-components-service">source</a>]</li>
+  <li><a href="https://groups.google.com/forum/#!forum/web-audio-components">Discussion Group</a></li>
+  <li><a href="#creating">Create your own Web Audio Component!</a></li>
+</ul>
+
+<div class="small-logo"></div>
